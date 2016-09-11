@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts,
-    comments: state.comments
+    recipes: state.recipes
   };
 };
 
