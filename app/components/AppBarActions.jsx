@@ -11,7 +11,7 @@ import TextField from 'material-ui/TextField';
 
 const AppBarActions = React.createClass({
   render() {
-    return <div className="AppBarButtonsContainer">
+    return <div className="appBarButtonsContainer">
       <TextField hintText="Search" />
       <DropDownMenu value={"temp"}>
         <MenuItem

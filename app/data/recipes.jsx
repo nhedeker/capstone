@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 const recipes = [
   {
     code: 87238973278,

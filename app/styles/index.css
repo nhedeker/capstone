@@ -1,17 +1,37 @@
 body {
   margin: 0;
+  background-color:
+#f5f5f5;
 }
 
-.AppBarButtonsContainer {
+.appBarButtonsContainer {
   display: flex;
   align-items: center;
 }
 
-.title {
-  cursor: pointer;
+.errorImg {
+  width: 171px;
+  height: 184.5px;
+  margin-bottom: 3vh;
 }
 
-.NotFoundPage {
+.ingredientsTitle {
+  margin-bottom: 0vh;
+}
+
+.instructionCounter {
+  border: .2rem solid grey;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;``
+  justify-content: center;
+  align-content: center;
+  font-weight: bold;
+  color: grey;
+}
+
+.notFoundPage {
   margin-top: 10vh;
   display: flex;
   align-items: center;
@@ -20,8 +40,24 @@ body {
   align-content: center;
 }
 
-.ErrorImg {
-  width: 171px;
-  height: 184.5px;
-  margin-bottom: 3vh;
+.recipeContentsContainer {
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.recipeImg {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  width: 100%;
+}
+
+.recipePaper {
+  width: 55%;
+  margin: 0 auto;
+  margin-top: 5vh;
+  margin-bottom: 20vh;
+}
+
+.title {
+  cursor: pointer;
 }
