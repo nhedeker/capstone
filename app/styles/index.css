@@ -10,3 +10,18 @@ body {
 .title {
   cursor: pointer;
 }
+
+.NotFoundPage {
+  margin-top: 10vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.ErrorImg {
+  width: 171px;
+  height: 184.5px;
+  margin-bottom: 3vh;
+}

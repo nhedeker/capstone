@@ -1,9 +1,19 @@
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
 
 const NotFound = React.createClass({
   render() {
-    return <RaisedButton label="NotFound" />;
+    return <div className="NotFoundPage">
+      <h1>Uh Oh!</h1>
+      <h2>The page you were looking for doesn't exist.</h2>
+      <img className="ErrorImg" src="./PusheenEats.png" />
+      <RaisedButton
+        icon={<ArrowBack />}
+        label="Return to Homepage"
+        primary={true}
+      />
+    </div>;
   }
 });
 

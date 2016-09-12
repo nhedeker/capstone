@@ -19,7 +19,7 @@ const Routes = React.createClass({
         <Route component={RecipeForm} path="newrecipe" />
         <Route component={UserAuth} path="login" />
         <Route component={Settings} path="settings" />
-        <Route component={User} path=":user" />
+        <Route component={User} path="user/:user" />
         <Route component={NotFound} path="*" />
         {/* make sure to add just /pin to NotFound */}
       </Route>
