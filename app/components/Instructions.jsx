@@ -9,8 +9,8 @@ const Instructions = React.createClass({
           key={index}
           leftIcon={
             <div
-              className="instructionCounter"
               style={{ display: 'flex' }}
+              className="instructionCounter"
             >
               <div>{index + 1}</div>
             </div>}
