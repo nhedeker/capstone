@@ -35,7 +35,7 @@ const AppBarActions = React.createClass({
           <AddCircle />
         </IconButton>
       </Link>
-      <Link to={"/usertemp"}>
+      <Link to={"/user/temp"}>
         <IconButton>
           <AccountCircle />
         </IconButton>

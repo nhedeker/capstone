@@ -40,9 +40,16 @@ body {
   align-content: center;
 }
 
+.recipeBottomLikeButton {
+  position: relative;
+  width: 50%;
+  margin-left: 25%;
+}
+
 .recipeContentsContainer {
   margin-left: 1vw;
   margin-right: 1vw;
+  padding-bottom: 3vh;
 }
 
 .recipeImg {
@@ -50,6 +57,18 @@ body {
   border-top-right-radius: 1rem;
   width: 100%;
 }
+
+.recipeImgContainer {
+  position: relative;
+  width: 100%;
+}
+
+.recipeImgLikeButton {
+  position: absolute;
+  top: 1.5vh;
+  margin-left: 1vw;
+}
+
 
 .recipePaper {
   width: 55%;
