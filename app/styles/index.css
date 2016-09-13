@@ -1,12 +1,18 @@
-body {
-  margin: 0;
-  background-color:
-#f5f5f5;
+.appBarActions {
+  margin-left: 10px;
 }
 
 .appBarButtonsContainer {
   display: flex;
   align-items: center;
+  width: 90%;
+  padding-right: 0;
+  margin-right: 10px;
+}
+
+body {
+  margin: 0;
+  background-color: #f5f5f5;
 }
 
 .errorImg {
@@ -46,10 +52,47 @@ body {
   margin-left: 25%;
 }
 
-.recipeContentsContainer {
+.recipeContentsContainer, .recipeFormContainer {
   margin-left: 1vw;
   margin-right: 1vw;
   padding-bottom: 3vh;
+}
+
+.recipeFormContainer {
+  padding-top: 1vh;
+}
+
+.recipeFormContentContainer {
+  margin-top: 1vh;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.recipeFormDetailsHeader {
+  margin-bottom: 0;
+}
+
+.recipeFormInputButton {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.recipeFormInputFileButton {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+}
+
+.recipeFormSubmitButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .recipeImg {

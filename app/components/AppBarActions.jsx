@@ -11,8 +11,21 @@ import TextField from 'material-ui/TextField';
 
 const AppBarActions = React.createClass({
   render() {
+    const appBarThemeColor = 'white';
+
+    const styleLabel = {
+      color: appBarThemeColor
+    };
+
+    const styleSearchUnderline = {
+      borderColor: appBarThemeColor
+    };
+
     return <div className="appBarButtonsContainer">
-      <TextField hintText="Search" />
+      <TextField
+        fullWidth={true} hintText="Search"
+        underlineFocusStyle={styleSearchUnderline}
+      />
       <DropDownMenu value={"temp"}>
         <MenuItem
           primaryText="Newest"
@@ -28,21 +41,24 @@ const AppBarActions = React.createClass({
         />
       </DropDownMenu>
       <IconButton>
-        <CheckBox />
+        <CheckBox color={appBarThemeColor} />
       </IconButton>
       <Link to={"/newrecipe"}>
         <IconButton>
-          <AddCircle />
+          <AddCircle color={appBarThemeColor} />
         </IconButton>
       </Link>
       <Link to={"/user/temp"}>
         <IconButton>
-          <AccountCircle />
+          <AccountCircle color={appBarThemeColor} />
         </IconButton>
       </Link>
       <FlatButton
+        className="appBarButtons"
         label="Login/Sign-Up"
+        labelStyle={styleLabel}
         onTouchTap={() => { browserHistory.push('/login') }}
+        style={{ minWidth: '140px' }}
       />
     </div>;
   }

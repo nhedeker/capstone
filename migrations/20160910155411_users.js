@@ -9,6 +9,7 @@ exports.up = function(knex) {
     table.string('last_name').defaultTo('').notNullable();
     table.text('bio').defaultTo('').notNullable();
     table.string('username').unique();
+    table.string('profile_img').defaultTo('').notNullable();
     table.timestamps(true, true);
   });
 };

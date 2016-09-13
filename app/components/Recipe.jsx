@@ -24,7 +24,7 @@ const Recipe = React.createClass({
         <h2>
           {`${recipes[1].name} by `}
           <Link to={`/user/${users[0].username}`}>
-            {users[0].username}
+            <img src={"./images/default_profile.png"} />
           </Link>
         </h2>
         <p>{recipes[1].description}</p>
