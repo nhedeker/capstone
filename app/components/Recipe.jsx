@@ -10,7 +10,11 @@ import users from '../data/users';
 
 const Recipe = React.createClass({
   render() {
-    return <Paper className="recipePaper" style={{ borderRadius: '1rem' }}>
+    const stylePaperBorder = {
+      borderRadius: '1rem'
+    };
+
+    return <Paper className="recipePaper" style={stylePaperBorder}>
       <div className="recipeImgContainer">
         <RaisedButton
           className="recipeImgLikeButton"
@@ -22,7 +26,7 @@ const Recipe = React.createClass({
       </div>
       <div className="recipeContentsContainer">
         <h2>
-          {`${recipes[1].name} by `}
+          {`${recipes[1].name} `}
           <Link to={`/user/${users[0].username}`}>
             <img src={"./images/default_profile.png"} />
           </Link>

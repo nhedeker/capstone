@@ -21,6 +21,12 @@ body {
   margin-bottom: 3vh;
 }
 
+.gridProfileImg {
+  border-radius: 50%;
+  width: 10%;
+  height: 10%;
+}
+
 .ingredientsTitle {
   margin-bottom: 0vh;
 }
@@ -95,6 +101,18 @@ body {
   align-items: flex-end;
 }
 
+.recipeGridContainer {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
 .recipeImg {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
@@ -112,12 +130,43 @@ body {
   margin-left: 1vw;
 }
 
+.recipeImgLikeButtonSmall {
+  margin-top: 5rem;
+  margin-left: 1000px;
+}
 
 .recipePaper {
   width: 55%;
   margin: 0 auto;
   margin-top: 5vh;
   margin-bottom: 20vh;
+}
+
+.seeMoreButton {
+  width: 100%;
+  position: absolute;
+  margin-bottom: 0;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.smallRecipeContentsContainer {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-bottom: 1vh;
+}
+
+/*.smallRecipePaper {
+  max-width: 20%;
+  min-width: 282.23px;
+  margin: 1rem;
+}*/
+
+.smallRecipePaper {
+  max-width: 20%;
+  min-width: 282.23px;
+  margin: 1rem;
+  position: relative;
 }
 
 .title {
