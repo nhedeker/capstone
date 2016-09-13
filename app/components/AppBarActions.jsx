@@ -17,14 +17,19 @@ const AppBarActions = React.createClass({
       color: appBarThemeColor
     };
 
-    const styleSearchUnderline = {
+    const styleSearchUnderlineFocused = {
       borderColor: appBarThemeColor
+    };
+
+    const styleSearchUnderline = {
+      borderColor: '#fafafa'
     };
 
     return <div className="appBarButtonsContainer">
       <TextField
         fullWidth={true} hintText="Search"
-        underlineFocusStyle={styleSearchUnderline}
+        underlineFocusStyle={styleSearchUnderlineFocused}
+        underlineStyle={styleSearchUnderline}
       />
       <DropDownMenu value={"temp"}>
         <MenuItem
