@@ -60,6 +60,7 @@ const AppBarActions = React.createClass({
       </Link>
       <FlatButton
         className="appBarButtons"
+        hoverColor="#00acc1"
         label="Login/Sign-Up"
         labelStyle={styleLabel}
         onTouchTap={() => { browserHistory.push('/login') }}

@@ -1,9 +1,10 @@
 import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
+import RecipeGrid from './RecipeGrid';
 
 const User = React.createClass({
   render() {
-    return <RaisedButton label="User" />;
+    return <RecipeGrid />;
   }
 });
 
