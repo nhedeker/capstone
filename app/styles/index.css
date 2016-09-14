@@ -1,3 +1,6 @@
+/*To be hard coded in a media query for Users component
+minWidth: '132px', minHeight: '132px'*/
+
 .appBarActions {
   margin-left: 10px;
 }
@@ -50,6 +53,24 @@ body {
   flex-direction: column;
   justify-content: center;
   align-content: center;
+}
+
+.profileInfoContainer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.profileUserInfoContainer {
+  display: flex;
+  flex-direction: row;
+  wrap: nowrap;
+  justify-content: space-between;
+  /*align-items: center;*/
+  /*issue with padding/border of profile icon on Users*/
+  /*http://images.hellogiggles.com/uploads/2015/03/08/purple-suede.jpg*/
+  align-content: center;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .recipeBottomLikeButton {
