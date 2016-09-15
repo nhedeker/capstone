@@ -1,6 +1,9 @@
 /*To be hard coded in a media query for Users component
 minWidth: '132px', minHeight: '132px'*/
 
+/*Make all black text this color*/
+/*color: #555555;*/
+
 .appBarActions {
   margin-left: 10px;
 }
@@ -28,6 +31,17 @@ body {
   border-radius: 50%;
   width: 10%;
   height: 10%;
+}
+
+.iconButtonSmall {
+  width: 72px;
+  height: 72px;
+  padding: 16px;
+}
+
+.iconImgSmall {
+  width: 36px;
+  height: 36px;
 }
 
 .ingredientsTitle {
@@ -60,6 +74,13 @@ body {
   padding-top: 1rem;
 }
 
+.profileUserImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  margin: 0px;
+}
+
 .profileUserInfoContainer {
   display: flex;
   flex-direction: row;
@@ -71,6 +92,29 @@ body {
   align-content: center;
   width: 60%;
   margin: 0 auto;
+}
+
+.profileUserInfoHeader{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;;
+}
+
+.profileUserRecipeTitle {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 65%;
+  margin: 0 auto;
+  /*text-align: center;*/
+  /*height: 50px;*/
+  height: 3rem;
+}
+
+.profileUserRecipeTitleContainer {
+  margin-top: 2rem;
 }
 
 .recipeBottomLikeButton {

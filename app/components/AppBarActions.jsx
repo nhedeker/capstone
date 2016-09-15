@@ -1,7 +1,6 @@
 import { Link, browserHistory } from 'react-router';
 import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 import AddCircle from 'material-ui/svg-icons/content/add-circle';
-import CheckBox from 'material-ui/svg-icons/toggle/check-box';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
@@ -45,9 +44,6 @@ const AppBarActions = React.createClass({
           value={"liked"}
         />
       </DropDownMenu>
-      <IconButton>
-        <CheckBox color={appBarThemeColor} />
-      </IconButton>
       <Link to={"/newrecipe"}>
         <IconButton>
           <AddCircle color={appBarThemeColor} />
