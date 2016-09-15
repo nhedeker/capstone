@@ -34,7 +34,7 @@ const RecipeForm = React.createClass({
             label="Choose a Recipe Image"
             primary={true}
           >
-            <input className="recipeFormInputFileButton" type="file" />
+            <input className="inputImgFileButton" type="file" />
           </RaisedButton>
           <h2>Ingredients</h2>
           <TextField

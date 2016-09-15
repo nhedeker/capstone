@@ -1,4 +1,5 @@
 import FlatButton from 'material-ui/FlatButton';
+import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
 import React from 'react';
 import TextField from 'material-ui/TextField';
@@ -14,11 +15,8 @@ const Settings = React.createClass({
       fontSize: '1.25rem'
     };
 
-    const styleTextFontSize = {
-      fontSize: '.925rem',
-      marginBottom: '0px',
-      color: '#7f7f7f',
-      marginTop: '20px'
+    const styleButtonLabelTransform = {
+      textTransform: 'initial'
     };
 
     return <Paper className="settingsPaper" style={stylePaperBorder}>
@@ -30,18 +28,18 @@ const Settings = React.createClass({
           floatingLabelText="Email"
           type="email"
         />
-        <p style={styleTextFontSize}>Password</p>
+        <p className="settingsText">Password</p>
         <FlatButton
           label="Change your password..."
-          labelStyle={{ textTransform: 'initial' }}
+          labelStyle={styleButtonLabelTransform}
           primary={true}
         />
         <div className="settingsUserNameContainer">
           <TextField
             defaultValue={users[0].firstName}
-            fullWidth={true}
             floatingLabelStyle={styleInputLabel}
             floatingLabelText="First Name"
+            fullWidth={true}
             style={{ marginRight: '3rem' }}
             type="text"
           />
@@ -53,39 +51,42 @@ const Settings = React.createClass({
             type="text"
           />
         </div>
-        <p style={styleTextFontSize}>Picture</p>
+        <p className="settingsText">Picture</p>
         <div className="settingsUserImgContainer">
           <img className="settingsUserImg" src="http://images.hellogiggles.com/uploads/2015/03/08/purple-suede.jpg" />
           <FlatButton
             label="Change picture"
             labelPosition="before"
-            labelStyle={{ textTransform: 'initial' }}
+            labelStyle={styleButtonLabelTransform}
             primary={true}
           >
-            <input type="file" className="settingsUserImgInput" />
+            <input className="inputImgFileButton" type="file" />
           </FlatButton>
         </div>
-        <p style={styleTextFontSize}>Username</p>
-        <p style={{ display: 'inline-block', marginTop: '.5rem' }}>nameofapp.herokuapp.com/user/</p>
+        <p className="settingsText">Username</p>
+        <p className="settingsUserName">nameofapp.herokuapp.com/user/</p>
         <TextField
           defaultValue={users[0].username}
           hintText="Username"
           type="text"
         />
         <TextField
+          floatingLabelStyle={styleInputLabel}
           floatingLabelText="About You"
           fullWidth={true}
           multiLine={true}
           rows={2}
         />
         <div className="settingsButtonsContainer">
-          <FlatButton
-            backgroundColor="#eeeeee"
-            hoverColor="#e0e0e0"
-            label="Cancel"
-            labelStyle={{ textTransform: 'initial' }}
-            style={{ marginRight: '1rem' }}
-          />
+          <Link to={"/user/temp"}>
+            <FlatButton
+              backgroundColor="#eeeeee"
+              hoverColor="#e0e0e0"
+              label="Cancel"
+              labelStyle={styleButtonLabelTransform}
+              style={{ marginRight: '1rem' }}
+            />
+          </Link>
           <FlatButton
             backgroundColor="#00bcd4"
             hoverColor="#4dd0e1"
