@@ -233,7 +233,6 @@ body {
 
 .settingsPaper{
   width: 65%;
-  /*min-height: 100%;*/
   margin: 0 auto;
   margin-top: 4vh;
   margin-bottom: 20vh;
@@ -292,4 +291,27 @@ body {
 
 .title {
   cursor: pointer;
+}
+
+.userAuthButton {
+  margin-top: 1rem;
+}
+
+.userAuthPaper {
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 4vh;
+  margin-bottom: 20vh;
+  padding-bottom: 1.5rem;
+  padding-top: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.userAuthTabContentContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
 }

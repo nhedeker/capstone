@@ -26,7 +26,9 @@ const AppBarActions = React.createClass({
 
     return <div className="appBarButtonsContainer">
       <TextField
-        fullWidth={true} hintText="Search"
+        fullWidth={true}
+        hintText="Search"
+        type="text"
         underlineFocusStyle={styleSearchUnderlineFocused}
         underlineStyle={styleSearchUnderline}
       />

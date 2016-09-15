@@ -21,12 +21,14 @@ const RecipeForm = React.createClass({
             floatingLabelText="Recipe Name"
             fullWidth={true}
             // errorText="This field is required"
+            type="text"
           />
           <TextField
             floatingLabelText="Recipe Description"
             fullWidth={true}
             multiLine={true}
             rows={2}
+            type="text"
           />
           <RaisedButton
             className="recipeFormInputButton"
@@ -39,6 +41,7 @@ const RecipeForm = React.createClass({
           <h2>Ingredients</h2>
           <TextField
             hintText="ingredient"
+            type="text"
           />
           <IconButton
             tooltip="add ingredient"
@@ -50,6 +53,7 @@ const RecipeForm = React.createClass({
           <h2>Instructions</h2>
           <TextField
             hintText="instruction"
+            type="text"
           />
           <IconButton
             tooltip="add instruction"

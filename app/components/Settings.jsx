@@ -76,6 +76,7 @@ const Settings = React.createClass({
           fullWidth={true}
           multiLine={true}
           rows={2}
+          type="text"
         />
         <div className="settingsButtonsContainer">
           <Link to={"/user/temp"}>
