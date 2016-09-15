@@ -1,5 +1,7 @@
 import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
 import { Link } from 'react-router';
+import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
 import React from 'react';
 import RecipeGrid from './RecipeGrid';
@@ -22,13 +24,17 @@ const User = React.createClass({
 
     const smallIcon = {
       width: '36px',
-      height: '36px'
+      height: '36px',
+      borderRadius: '50%'
     };
 
     const smallIconButton = {
       width: '72px',
       height: '72px',
-      padding: '16px'
+      // marginTop: '.25rem',
+      // padding: '16px',
+      borderRadius: '50%',
+      zIndex: 1
     };
 
     return <div className="profileInfoContainer">
@@ -44,17 +50,23 @@ const User = React.createClass({
                  ${users[0].lastName.trim() ? users[0].lastName : ''}`
               }
             </h1>
-            <Link to={"/settings"}>
-              <IconButton
-                iconStyle={smallIcon}
-                style={smallIconButton}
-                tooltip="Settings"
-                tooltipPosition="bottom-right"
-                touch={true}
-              >
-                <SettingsIcon color="#b2b1b0" />
-              </IconButton>
-            </Link>
+            <IconMenu
+              anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+              iconButtonElement={
+                <IconButton
+                  iconStyle={smallIcon}
+                  style={smallIconButton}
+                >
+                  <SettingsIcon color="#b2b1b0" />
+                </IconButton>
+              }
+              targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+            >
+              <Link className="linkNormalize" to={"/settings"}>
+                <MenuItem primaryText="Settings" />
+              </Link>
+              <MenuItem primaryText="Logout" />
+            </IconMenu>
           </div>
           <p>{`${users[0].bio.trim() ? users[0].bio : ''}`}</p>
         </Paper>

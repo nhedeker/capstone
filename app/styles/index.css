@@ -60,6 +60,10 @@ body {
   color: grey;
 }
 
+.linkNormalize {
+  text-decoration: none;
+}
+
 .notFoundPage {
   margin-top: 10vh;
   display: flex;
