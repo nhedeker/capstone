@@ -4,6 +4,15 @@ minWidth: '132px', minHeight: '132px'*/
 /*Make all black text this color*/
 /*color: #555555;*/
 
+.appContentsContainer {
+  margin-top: 4rem;
+}
+
+.appBar {
+  cursor: pointer;
+  top: 0;
+}
+
 .appBarActions {
   margin-left: 10px;
 }
@@ -17,6 +26,7 @@ minWidth: '132px', minHeight: '132px'*/
 }
 
 body {
+  top: 0;
   margin: 0;
   background-color: #f5f5f5;
 }
@@ -207,8 +217,8 @@ body {
 .recipePaper {
   width: 55%;
   margin: 0 auto;
-  margin-top: 5vh;
   margin-bottom: 20vh;
+  margin-top: 6.5rem;
 }
 
 .seeMoreButton {
@@ -293,10 +303,6 @@ body {
   position: relative;
 }
 
-.title {
-  cursor: pointer;
-}
-
 .userAuthButton {
   margin-top: 1rem;
 }
@@ -304,18 +310,19 @@ body {
 .userAuthPaper {
   width: 40%;
   margin: 0 auto;
-  margin-top: 4vh;
+  margin-top: 15vh;
   margin-bottom: 20vh;
-  padding-bottom: 1.5rem;
   padding-top: 0;
   padding-right: 0;
   padding-left: 0;
+  min-height: 25rem;
 }
 
 .userAuthTabContentContainer {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  height: 20rem;
 }

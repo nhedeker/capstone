@@ -14,12 +14,13 @@ const Main = React.createClass({
     };
 
     const styleAppBar = {
-      paddingRight: 0
+      paddingRight: 0,
+      position: 'fixed'
     };
 
     return <div>
       <AppBar
-        className="title"
+        className="appBar"
         onTitleTouchTap={() => { browserHistory.push('/') }}
         showMenuIconButton={false}
         style={styleAppBar}
@@ -28,7 +29,9 @@ const Main = React.createClass({
       >
         <AppBarActions className="appBarActions" />
       </AppBar>
-      {React.cloneElement(this.props.children, this.props)}
+      <div className="appContentsContainer">
+        {React.cloneElement(this.props.children, this.props)}
+      </div>
     </div>;
   }
 });

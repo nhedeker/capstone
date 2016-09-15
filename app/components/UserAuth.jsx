@@ -6,11 +6,7 @@ import React from 'react';
 
 const UserAuth = React.createClass({
   render() {
-    const stylePaperBorder = {
-      // borderRadius: '1rem',
-    };
-
-    return <Paper className="userAuthPaper" style={stylePaperBorder}>
+    return <Paper className="userAuthPaper">
       <Tabs inkBarStyle={{ backgroundColor: 'orange', height: '2.5px' }}>
         <Tab label="Log In" >
           <Login />
