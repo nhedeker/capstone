@@ -23,8 +23,9 @@ const SmallRecipe = React.createClass({
       color: 'white'
     };
 
-    const stylePaperBorder = {
-      borderRadius: '1rem'
+    const stylePaper = {
+      borderRadius: '1rem',
+      color: '#555555'
     };
 
     const styleMoreFlatButton = {
@@ -36,7 +37,7 @@ const SmallRecipe = React.createClass({
 
     return <Paper
       className="smallRecipePaper"
-      style={stylePaperBorder}
+      style={stylePaper}
     >
       <div className="recipeImgContainer">
         <IconButton

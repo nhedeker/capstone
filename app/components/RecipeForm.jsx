@@ -11,7 +11,16 @@ import TextField from 'material-ui/TextField';
 
 const RecipeForm = React.createClass({
   render() {
-    return <Paper className="recipePaper" style={{ borderRadius: '1rem' }}>
+    const stylePaper = {
+      borderRadius: '1rem',
+      color: '#555555'
+    };
+
+    const styleIconButton = {
+      color: '#00bcd4'
+    }
+
+    return <Paper className="recipePaper" style={stylePaper}>
       <div className="recipeFormContainer">
         <h1>New Recipe</h1>
         <Divider />
@@ -44,6 +53,7 @@ const RecipeForm = React.createClass({
             type="text"
           />
           <IconButton
+            iconStyle={styleIconButton}
             tooltip="add ingredient"
             tooltipPosition="bottom-right"
             touch={true}
@@ -56,6 +66,7 @@ const RecipeForm = React.createClass({
             type="text"
           />
           <IconButton
+            iconStyle={styleIconButton}
             tooltip="add instruction"
             tooltipPosition="bottom-right"
             touch={true}

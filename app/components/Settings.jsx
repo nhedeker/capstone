@@ -7,8 +7,9 @@ import users from '../data/users';
 
 const Settings = React.createClass({
   render() {
-    const stylePaperBorder = {
-      borderRadius: '1rem'
+    const stylePaper = {
+      borderRadius: '1rem',
+      color: '#555555'
     };
 
     const styleInputLabel = {
@@ -19,7 +20,7 @@ const Settings = React.createClass({
       textTransform: 'initial'
     };
 
-    return <Paper className="settingsPaper" style={stylePaperBorder}>
+    return <Paper className="settingsPaper" style={stylePaper}>
       <h1 className="settingsHeader">Settings</h1>
       <div className="settingsContentContainer">
         <TextField

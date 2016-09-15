@@ -14,6 +14,9 @@ const Instructions = React.createClass({
     // </div>;
     //
     // const completed = <CheckCircle />
+    const styleListItem = {
+      color: '#555555'
+    };
 
     return <List>
       {this.props.instructions.map((instruction, index) => {
@@ -31,6 +34,7 @@ const Instructions = React.createClass({
             // </div>
           }
           primaryText={instruction}
+          style={styleListItem}
         />;
       })}
     </List>;

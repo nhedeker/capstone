@@ -10,11 +10,12 @@ import users from '../data/users';
 
 const Recipe = React.createClass({
   render() {
-    const stylePaperBorder = {
-      borderRadius: '1rem'
+    const stylePaper = {
+      borderRadius: '1rem',
+      color: '#555555'
     };
 
-    return <Paper className="recipePaper" style={stylePaperBorder}>
+    return <Paper className="recipePaper" style={stylePaper}>
       <div className="recipeImgContainer">
         <RaisedButton
           className="recipeImgLikeButton"

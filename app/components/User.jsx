@@ -10,16 +10,18 @@ import users from '../data/users';
 
 const User = React.createClass({
   render() {
-    const stylePaperBorder = {
+    const stylePaper = {
       borderRadius: '1rem',
       paddingRight: '1rem',
-      paddingLeft: '1rem'
+      paddingLeft: '1rem',
+      color: '#555555'
       // marginTop: '5rem',
       // marginBottom: '5rem'
     };
 
     const styleRecipeTitle = {
-      backgroundColor: '#00bcd4'
+      backgroundColor: '#00bcd4',
+      color: '#424242'
     };
 
     const smallIcon = {
@@ -42,7 +44,7 @@ const User = React.createClass({
         <Paper circle={true} style={{ width: '30%' }}>
           <img className="profileUserImg" src="http://www.pil-group.com/uploads/contacts/normal/noimage1.png" />
         </Paper>
-        <Paper className="profileUserInfo" style={stylePaperBorder}>
+        <Paper className="profileUserInfo" style={stylePaper}>
           <div className="profileUserInfoHeader">
             <h1>
               {
