@@ -155,8 +155,8 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
-  width: 100%;
-  opacity: 0;
+  width: inherit;
+  /*opacity: 0;*/
 }
 
 .recipeFormSubmitButtonContainer {
@@ -215,17 +215,72 @@ body {
   border-bottom-right-radius: 1rem;
 }
 
+.settingsButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.settingsContentContainer {
+  margin-left: 20%;
+}
+
+.settingsHeader{
+  margin-top: 0;
+  margin-left: 1rem;
+}
+
+.settingsPaper{
+  width: 65%;
+  /*min-height: 100%;*/
+  margin: 0 auto;
+  margin-top: 4vh;
+  margin-bottom: 20vh;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+}
+
+.settingsUserNameContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.settingsUserImg {
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  margin-right: .5rem;
+}
+
+.settingsUserImgContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: .25rem;
+}
+
+.settingsUserImgInput {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+}
+
 .smallRecipeContentsContainer {
   margin-left: 1rem;
   margin-right: 1rem;
   padding-bottom: 1vh;
 }
-
-/*.smallRecipePaper {
-  max-width: 20%;
-  min-width: 282.23px;
-  margin: 1rem;
-}*/
 
 .smallRecipePaper {
   max-width: 20%;
