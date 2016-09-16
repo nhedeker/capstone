@@ -3,7 +3,8 @@
 const { camelizeKeys, decamelizeKeys } = require('humps');
 const bcrypt = require('bcrypt-as-promised');
 const boom = require('boom');
-const ev = require('express');
+const ev = require('express-validation');
+const express = require('express');
 const knex = require('../knex');
 const validations = require('../validations/users');
 
@@ -26,7 +27,8 @@ router.post('/users', ev(validations.post), (req, res, next) => {
       return knex('users')
       .select(knex.raw('1=1'))
       .where('username', username)
-      .first()
+      .first();
+    })
     .then((exists) => {
       if (exists) {
         throw boom.create(409, 'Username is taken');
