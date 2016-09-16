@@ -43,7 +43,15 @@ const cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// insert routes here
+const token = require('./routes/tokens');
+const users = require('./routes/users');
+const recipes = require('./routes/recipes');
+const likes = require('./routes/likes');
+
+app.use('/api', token);
+app.use('/api', users);
+app.use('/api', recipes);
+app.use('/api', likes);
 
 // Catch all for client to handle client-side routing
 app.use((_req, res) => {
