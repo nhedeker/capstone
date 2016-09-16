@@ -7,8 +7,8 @@ exports.up = function(knex) {
     table.integer('code').unique().notNullable();
     table.integer('likes').defaultTo(0).notNullable();
     table.text('description').defaultTo('').notNullable();
-    table.json('ingredients').defaultTo('').notNullable();
-    table.text('instructions').defaultTo('').notNullable();
+    table.json('ingredients');
+    table.text('instructions');
     table.text('img_url').defaultTo('').notNullable();
     table.integer('user_id')
       .references('id')
