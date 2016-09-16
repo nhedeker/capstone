@@ -15,8 +15,8 @@ const Routes = React.createClass({
     return <Router history={history}>
       <Route component={App} path="/">
         <IndexRoute component={RecipeGrid} />
-        <Route component={Recipe} path="recipe/:recipe" />
-        <Route component={RecipeForm} path="recipe/:recipe/edit" />
+        <Route component={Recipe} path="recipe/:recipeCode" />
+        <Route component={RecipeForm} path="recipe/:recipeCode/edit" />
         <Route component={RecipeForm} path="newrecipe" />
         <Route component={UserAuth} path="login" />
         <Route component={Settings} path="settings" />

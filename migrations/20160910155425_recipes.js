@@ -16,6 +16,12 @@ exports.up = function(knex) {
       .notNullable()
       .onDelete('CASCADE')
       .index();
+    table.string('user_username')
+      .references('username')
+      .inTable('users')
+      .notNullable()
+      .onDelete('CASCADE')
+      .index();
     table.timestamps(true, true);
   });
 };

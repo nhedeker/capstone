@@ -46,13 +46,16 @@ const SmallRecipe = React.createClass({
         >
           <Favorite />
         </IconButton>
-        <img className="recipeImg" src={recipe.imgUrl} />
+        <Link to={`/recipe/${recipe.code}`}>
+          <img className="recipeImg" src={recipe.imgUrl} />
+        </Link>
       </div>
       <div className="smallRecipeContentsContainer">
-        <h3>
-          {`${recipe.name} `}
-        </h3>
-        <p>{recipe.description}</p>
+        <Link style={{ textDecoration: 'none', color: '#555555' }} to={`/recipe/${recipe.code}`}>
+          <h3>
+            {`${recipe.name}`}
+          </h3>
+        </Link>
         <Link to={`/user/${users[0].username}`}>
           <img
             className="gridProfileImg"

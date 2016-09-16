@@ -3,9 +3,11 @@ import { browserHistory } from 'react-router';
 import recipes from './data/recipes';
 import rootReducer from './reducers/index';
 import { syncHistoryWithStore } from 'react-router-redux';
+import users from './data/users';
 
 const defaultState = {
-  recipes
+  recipes,
+  users
 };
 
 const enhancers = compose(

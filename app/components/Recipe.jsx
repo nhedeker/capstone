@@ -5,11 +5,28 @@ import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
-import recipes from '../data/recipes';
-import users from '../data/users';
 
 const Recipe = React.createClass({
   render() {
+    let { recipeCode } = this.props.params;
+
+    recipeCode = Number.parseInt(recipeCode);
+
+    // if (Number.isNaN(recipeCode)) {
+    //   this.props.router.push('/NotFound');
+    // }
+
+    const recipeI = this.props.recipes.findIndex((element) =>
+      element.code === recipeCode);
+
+    const recipe = this.props.recipes[recipeI];
+
+    const userI = this.props.users.findIndex((element) =>
+      element.username === recipe.userUsername);
+
+    console.log(userI);
+    const user = this.props.users[userI];
+
     const stylePaper = {
       borderRadius: '1rem',
       color: '#555555'
@@ -23,23 +40,23 @@ const Recipe = React.createClass({
           label="like"
           primary={true}
         />
-        <img className="recipeImg" src={recipes[1].imgUrl} />
+        <img className="recipeImg" src={recipe.imgUrl} />
       </div>
       <div className="recipeContentsContainer">
         <h2>
-          {`${recipes[1].name} `}
-          <Link to={`/user/${users[0].username}`}>
+          {`${recipe.name} `}
+          <Link to={`/user/${user.username}`}>
             <img src={"./images/default_profile.png"} />
           </Link>
         </h2>
-        <p>{recipes[1].description}</p>
+        <p>{recipe.description}</p>
         <h3 className="ingredientsTitle">Ingredients</h3>
         <Ingredients
           className="ingredientList"
-          ingredients={recipes[1].ingredients}
+          ingredients={recipe.ingredients}
         />
         <h3 className="ingredientsTitle">Instructions</h3>
-        <Instructions instructions={recipes[1].instructions} />
+        <Instructions instructions={recipe.instructions} />
         <RaisedButton
           className="recipeBottomLikeButton"
           icon={<Favorite />}
