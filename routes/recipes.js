@@ -30,6 +30,10 @@ router.get('/recipes', (req, res, next) => {
     .then((rows) => {
       const recipes = camelizeKeys(rows);
 
+      for (const recipe of recipes) {
+        recipe.instructions = JSON.parse(recipe.instructions);
+      }
+
       res.send(recipes);
     })
     .catch((err) => {

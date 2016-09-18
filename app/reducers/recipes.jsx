@@ -9,11 +9,9 @@ const recipes = (state = [], action) => {
       return state;
     }
     case 'RECEIVE_RECIPES': {
-      const newThing = Object.assign({}, state, {
-        recipesApi: action.recipes
+      return Object.assign({}, state, {
+        recipes: action.recipes
       });
-
-      return newThing;
     }
     default:
       return state;

@@ -56,7 +56,7 @@ const SmallRecipe = React.createClass({
             {`${recipe.name}`}
           </h3>
         </Link>
-        <Link to={`/user/${users[0].username}`}>
+        <Link to={`/user/${recipe.username}`}>
           <img
             className="gridProfileImg"
             src={"./images/default_profile.png"}

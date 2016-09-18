@@ -13,8 +13,6 @@ const Main = React.createClass({
       maxWidth: '100vw',
       minWidth: '150px',
       marginRight: '10px'
-      // overflow: 'none',
-      // textOverflow: 'none'
     };
 
     const styleAppBar = {

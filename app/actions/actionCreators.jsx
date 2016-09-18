@@ -10,14 +10,16 @@ export const increment = (index) => {
 
 export const requestRecipes = () => {
   return {
-    type: 'REQUEST_RECIPES'
+    type: 'REQUEST_RECIPES',
+    requestingRecipes: true
   };
 };
 
 export const receiveRecipes = (recipes) => {
   return {
     type: 'RECEIVE_RECIPES',
-    recipes
+    recipes,
+    requestingRecipes: false
   };
 };
 
@@ -27,12 +29,33 @@ export const fetchRecipes = () => {
 
     return axios.get('/api/recipes')
       .then((res) => {
-        console.log(res.data);
-        return res.data;
-      })
-      .then((data) => {
-        console.log(data);
-        return dispatch(receiveRecipes(data));
+        return dispatch(receiveRecipes(res.data));
+      });
+  };
+};
+
+export const requestUser = () => {
+  return {
+    type: 'REQUEST_USER',
+    isFetching: true
+  };
+};
+
+export const receiveUser = (user) => {
+  return {
+    type: 'RECEIVE_USER',
+    user,
+    isFetching: false
+  };
+};
+
+export const fetchUser = (username) => {
+  return (dispatch) => {
+    dispatch(requestUser());
+
+    return axios.get(`/api/users/${username}`)
+      .then((res) => {
+        return dispatch(receiveUser(res.data));
       });
   };
 };

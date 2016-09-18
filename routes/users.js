@@ -145,4 +145,24 @@ router.delete('/users', (req, res, next) => {
   });
 });
 
+router.get('/users/:username', (req, res, next) => {
+  const { username } = req.params;
+
+  console.log(username);
+
+  knex('users')
+    .where('username', username)
+    .first()
+    .then((row) => {
+      const user = camelizeKeys(row);
+
+      delete user.hashedPassword;
+
+      res.send(user);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 module.exports = router;

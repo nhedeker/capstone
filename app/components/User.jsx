@@ -6,10 +6,15 @@ import Paper from 'material-ui/Paper';
 import React from 'react';
 import RecipeGrid from './RecipeGrid';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
-import users from '../data/users';
 
 const User = React.createClass({
-  render() {
+  componentWillMount() {
+    this.props.fetchUser(this.props.params.user);
+  },
+
+  populateRender() {
+    const { user } = this.props.users;
+
     const stylePaper = {
       borderRadius: '1rem',
       paddingRight: '1rem',
@@ -39,7 +44,7 @@ const User = React.createClass({
       zIndex: 1
     };
 
-    return <div className="profileInfoContainer">
+    return <div>
       <div className="profileUserInfoContainer">
         <Paper circle={true} style={{ width: '30%' }}>
           <img className="profileUserImg" src="http://www.pil-group.com/uploads/contacts/normal/noimage1.png" />
@@ -48,8 +53,8 @@ const User = React.createClass({
           <div className="profileUserInfoHeader">
             <h1>
               {
-                `${users[0].firstName.trim() ? users[0].firstName : ''}
-                 ${users[0].lastName.trim() ? users[0].lastName : ''}`
+                `${user.firstName.trim() ? user.firstName : ''}
+                 ${user.lastName.trim() ? user.lastName : ''}`
               }
             </h1>
             <IconMenu
@@ -70,7 +75,7 @@ const User = React.createClass({
               <MenuItem primaryText="Logout" />
             </IconMenu>
           </div>
-          <p>{`${users[0].bio.trim() ? users[0].bio : ''}`}</p>
+          <p>{`${user.bio.trim() ? user.bio : ''}`}</p>
         </Paper>
       </div>
       <div className="profileUserRecipeTitleContainer">
@@ -79,6 +84,20 @@ const User = React.createClass({
         </Paper>
       </div>
       <RecipeGrid />
+    </div>;
+  },
+
+  render() {
+    const { users } = this.props;
+
+    let childElement = null;
+
+    if (users && users.user && !users.isFetching) {
+      childElement = this.populateRender();
+    }
+
+    return <div className="profileInfoContainer">
+      {childElement}
     </div>;
   }
 });

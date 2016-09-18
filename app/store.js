@@ -1,18 +1,16 @@
-import { compose, createStore, applyMiddleware } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { browserHistory } from 'react-router';
 import createLogger from 'redux-logger';
-import recipes from './data/recipes';
 import rootReducer from './reducers/index';
 import { syncHistoryWithStore } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
 import users from './data/users';
 
-let recipesApi;
+const recipes = { requestingRecipes: true };
 
 const defaultState = {
   recipes,
-  users,
-  recipesApi
+  users
 };
 
 const enhancers = compose(

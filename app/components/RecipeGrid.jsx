@@ -1,20 +1,24 @@
 import React from 'react';
 import SmallRecipe from './SmallRecipe';
-import recipes from '../data/recipes';
 import users from '../data/users';
 
 const RecipeGrid = React.createClass({
-  render() {
-    const childElements = recipes.map((element, index) => {
-      return <SmallRecipe key={index} recipe={element} users={users} />
+  mapRecipes() {
+    const { recipes } = this.props.recipes;
+
+    return recipes.map((element, index) => {
+      return <SmallRecipe key={index} recipe={element} users={users} />;
     });
+  },
+
+  render() {
+    let childElements = null;
+
+    if (this.props.recipes && this.props.recipes.recipes) {
+      childElements = this.mapRecipes();
+    }
 
     return <div className="recipeGridContainer">
-      {childElements}
-      {childElements}
-      {childElements}
-      {childElements}
-      {childElements}
       {childElements}
     </div>;
   }

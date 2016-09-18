@@ -27,14 +27,14 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// // CSRF Protection
-// app.use('/api', (req, res, next) => {
-//   if (/json/.test(req.get('Accept'))) {
-//     return next();
-//   }
-//
-//   res.sendStatus(406);
-// });
+// CSRF Protection
+app.use('/api', (req, res, next) => {
+  if (/json/.test(req.get('Accept'))) {
+    return next();
+  }
+
+  res.sendStatus(406);
+});
 
 // Parsing Request Body & Cookies
 const bodyParser = require('body-parser');
@@ -54,9 +54,9 @@ app.use('/api', recipes);
 app.use('/api', likes);
 
 // Catch all for client to handle client-side routing
-// app.use((_req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// });
+app.use((_req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Server side error handler
 // eslint-disable-next-line max-params

@@ -7,32 +7,16 @@ import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
 
 const Recipe = React.createClass({
-  render() {
-    let { recipeCode } = this.props.params;
+  populateRender() {
+    const { recipes } = this.props.recipes;
+    const { recipeCode } = this.props.params;
 
-    recipeCode = Number.parseInt(recipeCode);
-
-    // if (Number.isNaN(recipeCode)) {
-    //   this.props.router.push('/NotFound');
-    // }
-
-    const recipeI = this.props.recipes.findIndex((element) =>
+    const recipeI = recipes.findIndex((element) =>
       element.code === recipeCode);
 
-    const recipe = this.props.recipes[recipeI];
+    const recipe = recipes[recipeI];
 
-    const userI = this.props.users.findIndex((element) =>
-      element.username === recipe.userUsername);
-
-    console.log(userI);
-    const user = this.props.users[userI];
-
-    const stylePaper = {
-      borderRadius: '1rem',
-      color: '#555555'
-    };
-
-    return <Paper className="recipePaper" style={stylePaper}>
+    return <div>
       <div className="recipeImgContainer">
         <RaisedButton
           className="recipeImgLikeButton"
@@ -45,7 +29,7 @@ const Recipe = React.createClass({
       <div className="recipeContentsContainer">
         <h2>
           {`${recipe.name} `}
-          <Link to={`/user/${user.username}`}>
+          <Link to={`/user/${recipe.username}`}>
             <img src={"./images/default_profile.png"} />
           </Link>
         </h2>
@@ -64,6 +48,23 @@ const Recipe = React.createClass({
           primary={true}
         />
       </div>
+    </div>;
+  },
+
+  render() {
+    const stylePaper = {
+      borderRadius: '1rem',
+      color: '#555555'
+    };
+
+    let childElement = null;
+
+    if (this.props.recipes && this.props.recipes.recipes) {
+      childElement = this.populateRender();
+    }
+
+    return <Paper className="recipePaper" style={stylePaper}>
+      {childElement}
     </Paper>;
   }
 });
