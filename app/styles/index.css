@@ -222,6 +222,14 @@ body {
   margin-top: 6.5rem;
 }
 
+.recipeProfileImg {
+  border-radius: 50%;
+  min-width: 37.73px;
+  min-height: 35.72px;
+  max-width: 5%;
+  max-height: 5%;
+}
+
 .seeMoreButton {
   width: 100%;
   position: absolute;

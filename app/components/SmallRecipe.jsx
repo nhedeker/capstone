@@ -7,7 +7,7 @@ import React from 'react';
 
 const SmallRecipe = React.createClass({
   render() {
-    const { recipe, users } = this.props;
+    const { recipe } = this.props;
 
     const userColor = '#00bcd4';
 
@@ -59,7 +59,7 @@ const SmallRecipe = React.createClass({
         <Link to={`/user/${recipe.username}`}>
           <img
             className="gridProfileImg"
-            src={"./images/default_profile.png"}
+            src={recipe.profileImg}
           />
         </Link>
       </div>

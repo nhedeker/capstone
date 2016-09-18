@@ -30,7 +30,7 @@ const Recipe = React.createClass({
         <h2>
           {`${recipe.name} `}
           <Link to={`/user/${recipe.username}`}>
-            <img src={"./images/default_profile.png"} />
+            <img className="recipeProfileImg" src={recipe.profileImg} />
           </Link>
         </h2>
         <p>{recipe.description}</p>

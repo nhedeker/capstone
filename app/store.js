@@ -4,18 +4,14 @@ import createLogger from 'redux-logger';
 import rootReducer from './reducers/index';
 import { syncHistoryWithStore } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
-import users from './data/users';
 
 const recipes = { requestingRecipes: true };
+const users = users;
 
 const defaultState = {
   recipes,
   users
 };
-
-const enhancers = compose(
-  window.devToolsExtension ? window.devToolsExtension() : (fn) => fn
-);
 
 const loggerMiddleware = createLogger();
 
