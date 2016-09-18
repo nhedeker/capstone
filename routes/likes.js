@@ -10,7 +10,7 @@ const validations = require('../validations/likes');
 const router = express.Router();
 
 // Creates new user like entry in likes table
-router.post('/users/likes', ev(validations.post), (req, res, next) => {
+router.post('/users/likes', (req, res, next) => {
   const { recipeId } = req.body;
   const { userId } = req.token;
 
@@ -66,7 +66,7 @@ router.get('/users/likes', (req, res, next) => {
 });
 
 // Deletes a like entry with the like table
-router.delete('/users/likes', ev(validations.delete), (req, res, next) => {
+router.delete('/users/likes', (req, res, next) => {
   const { recipeId } = req.body;
   const { userId } = req.token;
 
@@ -84,3 +84,5 @@ router.delete('/users/likes', ev(validations.delete), (req, res, next) => {
     next(err);
   });
 });
+
+module.exports = router;

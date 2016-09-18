@@ -7,13 +7,13 @@ const ev = require('express-validation');
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const knex = require('../knex');
-const validations = require('../validations/users');
+const validations = require('../validations/token');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
 // Creates JWT for user authentication
-router.post('/token', ev(validations.post), (req, res, next) => {
+router.post('/token', (req, res, next) => {
   let user;
 
   knex('users')
@@ -29,7 +29,11 @@ router.post('/token', ev(validations.post), (req, res, next) => {
       return bcrypt.compare(req.body.password, user.hashedPassword);
     })
     .then(() => {
-      const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
+      const token = jwt.sign(
+        {
+          userId: user.id,
+          userUsername: user.username
+        }, process.env.JWT_SECRET);
 
       res.cookie('accessToken', token, {
         httpOnly: true,

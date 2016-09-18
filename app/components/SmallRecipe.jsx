@@ -63,14 +63,14 @@ const SmallRecipe = React.createClass({
           />
         </Link>
       </div>
-      <Link to={`/recipe/${recipe.code}`}>
+      {/* <Link to={`/recipe/${recipe.code}`}>
         <FlatButton
           className="seeMoreButton"
           label="Full Recipe"
           primary={true}
           style={styleMoreFlatButton}
         />
-      </Link>
+      </Link> */}
       {/* <Link to={`/recipe/${recipe.code/edit}`}>
         <FlatButton
           backgroundColor={userColor}

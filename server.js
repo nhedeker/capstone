@@ -43,7 +43,7 @@ const cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const token = require('./routes/tokens');
+const token = require('./routes/token');
 const users = require('./routes/users');
 const recipes = require('./routes/recipes');
 const likes = require('./routes/likes');
@@ -54,9 +54,9 @@ app.use('/api', recipes);
 app.use('/api', likes);
 
 // Catch all for client to handle client-side routing
-app.use((_req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// app.use((_req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
 
 // Server side error handler
 // eslint-disable-next-line max-params
@@ -83,11 +83,11 @@ app.use((err, _req, res, _next) => {
   res.sendStatus(500);
 });
 
-// const port = process.env.PORT || 8000;
-//
-// app.listen(port, () => {
-//   if (app.get('env') !== 'test') {
-//     // eslint-disable-next-line no-console
-//     console.log('Listening on port', port);
-//   }
-// });
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+  if (app.get('env') !== 'test') {
+    // eslint-disable-next-line no-console
+    console.log('Listening on port', port);
+  }
+});

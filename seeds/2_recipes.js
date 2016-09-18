@@ -6,7 +6,7 @@ exports.seed = function(knex) {
     .then(() => knex('recipes').insert([
       {
         id: 1,
-        code: 87238978,
+        code: '87238978',
         likes: 5,
         name: 'A Good Easy Garlic Chicken',
         description: 'Sprinkle chicken breasts with garlic powder, onion powder and seasoning salt - then sautee and enjoy. Couldn\'t be easier! Great recipe for quick and easy meal, even for the pickiest eater!',
@@ -19,7 +19,7 @@ exports.seed = function(knex) {
       },
       {
         id: 2,
-        code: 9737883,
+        code: '9737883',
         likes: 3,
         name: 'Lime Chicken Soft Tacos',
         description: 'I was given this recipe by my mom when I went away to college, and it has become all of my friends\' favorite!',
@@ -32,7 +32,7 @@ exports.seed = function(knex) {
       },
       {
         id: 3,
-        code: 3287932,
+        code: '3287932',
         likes: 4,
         name: 'Honey Mustard Grilled Chicken',
         description: '\'If ye have faith as a grain of mustard seed\', ye shall make and enjoy this simple, tangy, delicious grilled chicken dish!',
@@ -45,7 +45,7 @@ exports.seed = function(knex) {
       },
       {
         id: 4,
-        code: 723782,
+        code: '723782',
         likes: 10,
         name: 'Farm Lady\'s Delicious Chicken Parmesan',
         description: 'Even the kids love it! Thin chicken breasts are dusted in bread crumbs (seasoned with Parmesan cheese, basil, and oregano), then baked for 10-12 minutes. Top with mozzarella and serve with your favorite spaghetti sauce!',
@@ -58,7 +58,7 @@ exports.seed = function(knex) {
       },
       {
         id: 5,
-        code: 188827,
+        code: '188827',
         likes: 21,
         name: 'Vegetarian Stuffed Red Bell Peppers',
         description: 'These stuffed peppers are so fresh tasting and healthy. They make a great side dish or a meal on their own.',
@@ -71,7 +71,7 @@ exports.seed = function(knex) {
       },
       {
         id: 6,
-        code: 62611,
+        code: '62611',
         likes: 14,
         name: 'Unbelievable Chicken',
         description: 'This unusual combination of common ingredients is fabulous! Everyone who tastes it asks me to share the recipe. You will love it and the many compliments you get--I promise!',
@@ -84,7 +84,7 @@ exports.seed = function(knex) {
       },
       {
         id: 7,
-        code: 52627,
+        code: '52627',
         likes: 100,
         name: 'Best Big, Fat, Chewy Chocolate Chip Cookie',
         description: 'These cookies are the pinnacle of perfection! If you want a big, fat, chewy cookie like the kind you see at bakeries and specialty shops, then these are the cookies for you!',

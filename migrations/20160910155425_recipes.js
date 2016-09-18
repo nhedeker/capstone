@@ -4,7 +4,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('recipes', (table) => {
     table.increments();
     table.string('name').defaultTo('').notNullable();
-    table.integer('code').unique().notNullable();
+    table.text('code').unique().notNullable();
     table.integer('likes').defaultTo(0).notNullable();
     table.text('description').defaultTo('').notNullable();
     table.json('ingredients');
@@ -12,12 +12,6 @@ exports.up = function(knex) {
     table.text('img_url').defaultTo('').notNullable();
     table.integer('user_id')
       .references('id')
-      .inTable('users')
-      .notNullable()
-      .onDelete('CASCADE')
-      .index();
-    table.string('user_username')
-      .references('username')
       .inTable('users')
       .notNullable()
       .onDelete('CASCADE')
