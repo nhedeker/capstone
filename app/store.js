@@ -1,20 +1,30 @@
-import { compose, createStore } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import { browserHistory } from 'react-router';
+import createLogger from 'redux-logger';
 import recipes from './data/recipes';
 import rootReducer from './reducers/index';
 import { syncHistoryWithStore } from 'react-router-redux';
+import thunkMiddleware from 'redux-thunk';
 import users from './data/users';
+
+let recipesApi;
 
 const defaultState = {
   recipes,
-  users
+  users,
+  recipesApi
 };
 
 const enhancers = compose(
   window.devToolsExtension ? window.devToolsExtension() : (fn) => fn
 );
 
-const store = createStore(rootReducer, defaultState, enhancers);
+const loggerMiddleware = createLogger();
+
+const store = createStore(rootReducer, defaultState, applyMiddleware(
+  thunkMiddleware,
+  loggerMiddleware
+));
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

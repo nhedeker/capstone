@@ -4,6 +4,10 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 
 const Main = React.createClass({
+  componentWillMount() {
+    this.props.fetchRecipes();
+  },
+
   render() {
     const styleTitle = {
       maxWidth: '100vw',

@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state) => {
   return {
     recipes: state.recipes,
-    users: state.users
+    users: state.users,
+    recipesApi: state.recipesApi
   };
 };
 

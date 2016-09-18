@@ -27,14 +27,14 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// CSRF Protection
-app.use('/api', (req, res, next) => {
-  if (/json/.test(req.get('Accept'))) {
-    return next();
-  }
-
-  res.sendStatus(406);
-});
+// // CSRF Protection
+// app.use('/api', (req, res, next) => {
+//   if (/json/.test(req.get('Accept'))) {
+//     return next();
+//   }
+//
+//   res.sendStatus(406);
+// });
 
 // Parsing Request Body & Cookies
 const bodyParser = require('body-parser');
@@ -83,7 +83,7 @@ app.use((err, _req, res, _next) => {
   res.sendStatus(500);
 });
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
   if (app.get('env') !== 'test') {

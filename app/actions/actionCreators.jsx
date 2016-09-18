@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // increment like
 export const increment = (index) => {
   return {
@@ -6,21 +8,31 @@ export const increment = (index) => {
   };
 };
 
-// add comment
-export const addComment = (postId, author, comment) => {
+export const requestRecipes = () => {
   return {
-    type: 'ADD_COMMENT',
-    postId,
-    author,
-    comment
+    type: 'REQUEST_RECIPES'
   };
 };
 
-// remove comment
-export const removeComment = (postId, i) => {
+export const receiveRecipes = (recipes) => {
   return {
-    type: 'REMOVE_COMMENT',
-    postId,
-    i
+    type: 'RECEIVE_RECIPES',
+    recipes
+  };
+};
+
+export const fetchRecipes = () => {
+  return (dispatch) => {
+    dispatch(requestRecipes());
+
+    return axios.get('/api/recipes')
+      .then((res) => {
+        console.log(res.data);
+        return res.data;
+      })
+      .then((data) => {
+        console.log(data);
+        return dispatch(receiveRecipes(data));
+      });
   };
 };

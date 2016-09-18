@@ -5,8 +5,15 @@
 
 const recipes = (state = [], action) => {
   switch (action.type) {
-    case 'INCREMENT_LIKES': {
+    case 'REQUEST_RECIPES': {
       return state;
+    }
+    case 'RECEIVE_RECIPES': {
+      const newThing = Object.assign({}, state, {
+        recipesApi: action.recipes
+      });
+
+      return newThing;
     }
     default:
       return state;
