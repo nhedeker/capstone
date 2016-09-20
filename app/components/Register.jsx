@@ -7,13 +7,7 @@ const Register = React.createClass({
   render() {
     const { email, password, username, errors } = this.props.userAuth;
 
-    const handleEmailUpdate = this.props.updateUserAuthEmail;
-
-    const handlePasswordUpdate = this.props.updateUserAuthPassword;
-
-    const handleUsernameUpdate = this.props.updateUserAuthUsername;
-
-    const handleBlur = this.props.updateUserAuthErrors;
+    const handleChange = this.props.updateUserAuth;
 
     const styleUserAuthButtonLabel = {
       textTransform: 'inital'
@@ -24,15 +18,16 @@ const Register = React.createClass({
       minWidth: '172.8px'
     };
 
-    let toDisable = true;
+    const toDisable =
+      errors.email.length || errors.password.length ||
+      !(email.length && password.length && username.length);
 
     return <div className="userAuthTabContentContainer">
       <TextField
         errorText={errors.email}
         floatingLabelText="Email"
         name="email"
-        onBlur={handleBlur}
-        onChange={handleEmailUpdate}
+        onChange={handleChange}
         type="email"
         value={email}
       />
@@ -40,8 +35,7 @@ const Register = React.createClass({
         errorText={errors.password}
         floatingLabelText="Create a Password"
         name="password"
-        onBlur={handleBlur}
-        onChange={handlePasswordUpdate}
+        onChange={handleChange}
         type="password"
         value={password}
       />
@@ -49,8 +43,7 @@ const Register = React.createClass({
         errorText={errors.username}
         floatingLabelText="Create a Username"
         name="username"
-        onBlur={handleBlur}
-        onChange={handleUsernameUpdate}
+        onChange={handleChange}
         type="text"
         value={username}
       />

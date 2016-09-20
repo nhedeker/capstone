@@ -125,24 +125,11 @@ export const registerUser = (email, password, username) => {
   };
 };
 
-export const updateUserAuthEmail = (event) => {
+export const updateUserAuthData = (event) => {
   return {
-    type: 'UPDATE_USERAUTH_EMAIL',
-    email: event.target.value
-  };
-};
-
-export const updateUserAuthPassword = (event) => {
-  return {
-    type: 'UPDATE_USERAUTH_PASSWORD',
-    password: event.target.value
-  };
-};
-
-export const updateUserAuthUsername = (event) => {
-  return {
-    type: 'UPDATE_USERAUTH_USERNAME',
-    username: event.target.value
+    type: 'UPDATE_USERAUTH_DATA',
+    name: event.target.name,
+    value: event.target.value
   };
 };
 
@@ -150,6 +137,13 @@ export const updateUserAuthErrors = (event) => {
   return {
     type: 'UPDATE_USERAUTH_ERRORS',
     event
+  };
+};
+
+export const updateUserAuth = (event) => {
+  return (dispatch) => {
+    dispatch(updateUserAuthData(event));
+    dispatch(updateUserAuthErrors(event));
   };
 };
 

@@ -11,6 +11,8 @@ import TextField from 'material-ui/TextField';
 
 const RecipeForm = React.createClass({
   render() {
+    const { newRecipe } = this.props.recipes;
+
     const stylePaper = {
       borderRadius: '1rem',
       color: '#555555'
@@ -18,7 +20,7 @@ const RecipeForm = React.createClass({
 
     const styleIconButton = {
       color: '#00bcd4'
-    }
+    };
 
     return <Paper className="recipePaper" style={stylePaper}>
       <div className="recipeFormContainer">
@@ -39,40 +41,42 @@ const RecipeForm = React.createClass({
             rows={2}
             type="text"
           />
-          <RaisedButton
-            className="recipeFormInputButton"
-            icon={<Image />}
-            label="Choose a Recipe Image"
-            primary={true}
-          >
-            <input className="inputImgFileButton" type="file" />
-          </RaisedButton>
+          <TextField
+            floatingLabelText="Recipe Image Url"
+            fullWidth={true}
+            // errorText="This field is required"
+            type="url"
+          />
           <h2>Ingredients</h2>
-          <TextField
-            hintText="ingredient"
-            type="text"
-          />
-          <IconButton
-            iconStyle={styleIconButton}
-            tooltip="add ingredient"
-            tooltipPosition="bottom-right"
-            touch={true}
-          >
-            <AddCircle />
-          </IconButton>
+          <div>
+            <TextField
+              hintText="ingredient"
+              type="text"
+            />
+            <IconButton
+              iconStyle={styleIconButton}
+              tooltip="add ingredient"
+              tooltipPosition="bottom-right"
+              touch={true}
+            >
+              <AddCircle />
+            </IconButton>
+          </div>
           <h2>Instructions</h2>
-          <TextField
-            hintText="instruction"
-            type="text"
-          />
-          <IconButton
-            iconStyle={styleIconButton}
-            tooltip="add instruction"
-            tooltipPosition="bottom-right"
-            touch={true}
-          >
-            <AddCircle />
-          </IconButton>
+          <div>
+            <TextField
+              hintText="instruction"
+              type="text"
+            />
+            <IconButton
+              iconStyle={styleIconButton}
+              tooltip="add instruction"
+              tooltipPosition="bottom-right"
+              touch={true}
+            >
+              <AddCircle />
+            </IconButton>
+          </div>
           <br />
           <div className="recipeFormSubmitButtonContainer">
             <RaisedButton

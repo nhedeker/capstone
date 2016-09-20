@@ -6,7 +6,12 @@ const userAuth = (state = [], action) => {
       return Object.assign({}, state, {
         email: '',
         password: '',
-        username: ''
+        username: '',
+        errors: {
+          email: '',
+          password: '',
+          username: ''
+        }
       });
     }
     case 'UPDATE_LOGIN': {
@@ -14,46 +19,59 @@ const userAuth = (state = [], action) => {
         loggedIn: action.loggedIn
       });
     }
-    case 'UPDATE_USERAUTH_EMAIL': {
+    case 'UPDATE_USERAUTH_DATA': {
       return Object.assign({}, state, {
-        email: action.email
-      });
-    }
-    case 'UPDATE_USERAUTH_PASSWORD': {
-      return Object.assign({}, state, {
-        password: action.password
-      });
-    }
-    case 'UPDATE_USERAUTH_USERNAME': {
-      return Object.assign({}, state, {
-        username: action.username
+        [action.name]: action.value
       });
     }
     case 'UPDATE_USERAUTH_ERRORS': {
-      const schema = Joi.object({
-        email: Joi.string().trim().max(255).email().min(3).required(),
-        password: Joi.string().trim().max(255).min(8).required(),
-        username: Joi.string().trim().max(255).min(3)
-      });
+      const { name } = action.event.target;
 
-      const { name, value } = action.event.target;
-      console.log(name);
       const nextErrors = Object.assign({}, state.errors);
-      console.log(nextErrors);
-      const result = Joi.validate({ [name]: value }, schema);
-      console.log(result);
 
-      if (result.error) {
-        for (const detail of result.error.details) {
-          nextErrors[detail.path] = detail.message;
+      if (!state[name] || !state[name].length) {
+        nextErrors[name] = `${name} is required`;
+
+        return Object.assign({}, state, { errors: nextErrors });
+      }
+      else if (name === 'email') {
+        if (state.email.length < 3) {
+          nextErrors.email = 'email must contain at least 3 characters';
+
+          return Object.assign({}, state, { errors: nextErrors });
         }
+        else if (!state.email.includes('@')) {
+          nextErrors.email = 'email must be a valid email address';
+
+          return Object.assign({}, state, { errors: nextErrors });
+        }
+        nextErrors.email = '';
+
+        return Object.assign({}, state, { errors: nextErrors });
+      }
+      else if (name === 'password') {
+        if (state.password.length < 8) {
+          nextErrors.password = 'password must conatin at least 8 characters';
+
+          return Object.assign({}, state, { errors: nextErrors });
+        }
+        nextErrors.password = '';
+
+        return Object.assign({}, state, { errors: nextErrors });
+      }
+      else if (name === 'username') {
+        if (state.username.length < 3) {
+          nextErrors.username = 'username must contain at least 3 characters';
+
+          return Object.assign({}, state, { errors: nextErrors });
+        }
+
+        nextErrors.username = '';
 
         return Object.assign({}, state, { errors: nextErrors });
       }
 
-      delete nextErrors[name];
-
-      return Object.assign({}, state, { errors: nextErrors });
+      return state;
     }
     default:
       return state;

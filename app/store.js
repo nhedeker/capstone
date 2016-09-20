@@ -14,7 +14,14 @@ const recipes = {
   liked: [],
   order: 'Newest',
   showLiked: cookie.load('loggedIn') || false,
-  searchTerm: ''
+  searchTerm: '',
+  newRecipe: {
+    name: '',
+    description: '',
+    imgUrl: '',
+    ingredients: [''],
+    instructtions: ['']
+  }
 };
 
 const userAuth = {
@@ -23,7 +30,11 @@ const userAuth = {
   username: '',
   loggedIn: cookie.load('loggedIn') || false,
   user: cookie.load('user') || null,
-  errors: {},
+  errors: {
+    email: '',
+    password: '',
+    username: ''
+  },
   likes: {}
 };
 

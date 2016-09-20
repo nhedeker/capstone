@@ -5,11 +5,9 @@ import TextField from 'material-ui/TextField';
 
 const Login = React.createClass({
   render() {
-    const { email, password } = this.props.userAuth;
+    const { email, password, errors } = this.props.userAuth;
 
-    const handleEmailUpdate = this.props.updateUserAuthEmail;
-
-    const handlePasswordUpdate = this.props.updateUserAuthPassword;
+    const handleChange = this.props.updateUserAuth;
 
     const styleUserAuthButtonLabel = {
       textTransform: 'inital'
@@ -20,18 +18,24 @@ const Login = React.createClass({
       minWidth: '172.8px'
     };
 
-    let toDisable = true;
+    const toDisable =
+      errors.email.length || errors.password.length ||
+      !(email.length && password.length);
 
     return <div className="userAuthTabContentContainer">
       <TextField
+        errorText={errors.email}
         floatingLabelText="Email"
-        onChange={handleEmailUpdate}
+        name="email"
+        onChange={handleChange}
         type="text"
         value={email}
       />
       <TextField
+        errorText={errors.password}
         floatingLabelText="Password"
-        onChange={handlePasswordUpdate}
+        name="password"
+        onChange={handleChange}
         type="password"
         value={password}
       />
