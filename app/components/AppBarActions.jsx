@@ -12,6 +12,7 @@ const AppBarActions = React.createClass({
   render() {
     const handleOrderChange = this.props.updateRecipeOrder;
     const handleSearchTermChange = this.props.search;
+    const loggedIn = this.props.userAuth.loggedIn;
 
     const appBarThemeColor = 'white';
 
@@ -57,12 +58,12 @@ const AppBarActions = React.createClass({
           value="Liked"
         />
       </DropDownMenu>
-      <Link to={"/newrecipe"}>
+      <Link style={{ display: loggedIn ? 'block' : 'none' }} to={"/newrecipe"}>
         <IconButton>
           <AddCircle color={appBarThemeColor} />
         </IconButton>
       </Link>
-      <Link to={"/user/temp"}>
+      <Link style={{ display: loggedIn ? 'block' : 'none' }} to={"/user/temp"}>
         <IconButton>
           <AccountCircle color={appBarThemeColor} />
         </IconButton>
@@ -73,7 +74,7 @@ const AppBarActions = React.createClass({
         label="Login/Sign-Up"
         labelStyle={styleLabel}
         onTouchTap={() => { browserHistory.push('/login') }}
-        style={{ minWidth: '140px' }}
+        style={{ minWidth: '140px', display: loggedIn ? 'none' : 'block' }}
       />
     </div>;
   }
