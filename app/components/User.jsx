@@ -9,7 +9,7 @@ import SettingsIcon from 'material-ui/svg-icons/action/settings';
 
 const User = React.createClass({
   componentWillMount() {
-    this.props.fetchUser(this.props.params.user);
+    this.props.getUserPageData(this.props.params.user);
   },
 
   populateRender() {
@@ -42,6 +42,13 @@ const User = React.createClass({
       zIndex: 1
     };
 
+    let displayName = user.username;
+
+    if (user.firstName) {
+      displayName = user.firstName +
+        (user.lastName.trim() ? ` ${user.lastName}` : '');
+    }
+
     return <div>
       <div className="profileUserInfoContainer">
         <Paper circle={true} style={{ width: '30%' }}>
@@ -50,10 +57,7 @@ const User = React.createClass({
         <Paper className="profileUserInfo" style={stylePaper}>
           <div className="profileUserInfoHeader">
             <h1>
-              {
-                `${user.firstName.trim() ? user.firstName : ''}
-                 ${user.lastName.trim() ? user.lastName : ''}`
-              }
+              {displayName}
             </h1>
             <IconMenu
               anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
@@ -82,7 +86,7 @@ const User = React.createClass({
           <h1>Recipes</h1>
         </Paper>
       </div>
-      <RecipeGrid />
+      {React.cloneElement(<RecipeGrid />, this.props)}
     </div>;
   },
 

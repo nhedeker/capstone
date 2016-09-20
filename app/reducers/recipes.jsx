@@ -35,6 +35,15 @@ const recipes = (state = [], action) => {
         searchTerm: action.searchValue
       });
     }
+    case 'FILTER_BY_USER': {
+      const filteredRecipes = state.recipes.filter((recipe) => {
+        return recipe.username === action.username;
+      });
+
+      return Object.assign({}, state, {
+        showRecipes: filteredRecipes
+      });
+    }
     case 'FILTER_BY_SEARCH': {
       if (!state.searchTerm.trim()) {
         return Object.assign({}, state, {

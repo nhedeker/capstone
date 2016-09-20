@@ -3,6 +3,11 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 
 const Register = React.createClass({
+  handleTouchTap() {
+    this.props.registerUser(this.props.userAuth.email,
+      this.props.userAuth.password, this.props.userAuth.username);
+  },
+
   render() {
     const { email, password, username, errors } = this.props.userAuth;
 
@@ -18,7 +23,7 @@ const Register = React.createClass({
     };
 
     const toDisable =
-      errors.email.length || errors.password.length ||
+      errors.email.length || errors.password.length || errors.username.length ||
       !(email.length && password.length && username.length);
 
     return <div className="userAuthTabContentContainer">
@@ -51,6 +56,7 @@ const Register = React.createClass({
         disabled={toDisable}
         label="Register"
         labelStyle={styleUserAuthButtonLabel}
+        onTouchTap={this.handleTouchTap}
         primary={true}
         style={styleUserAuthButton}
       />

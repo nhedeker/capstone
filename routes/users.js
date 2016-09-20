@@ -37,7 +37,7 @@ router.post('/users', (req, res, next) => {
       return bcrypt.hash(password, 12);
     })
     .then((hashedPassword) => {
-      const newUser = { email, hashedPassword };
+      const newUser = { email, hashedPassword, username };
 
       const row = decamelizeKeys(newUser);
 
@@ -79,9 +79,9 @@ router.patch('/users', (req, res, next) => {
     username,
     bio,
     firstName,
-    lastName
+    lastName,
+    profileImg
   } = req.body;
-  let { profileImg } = req.body;
 
   knex('users')
     .select('id')
@@ -115,7 +115,7 @@ router.patch('/users', (req, res, next) => {
       return knex('users')
         .where('id', userId)
         .update(updatedRow)
-        .returning('*')
+        .returning('*');
     })
     .then((rows) => {
       const user = camelizeKeys(rows[0]);
@@ -148,8 +148,6 @@ router.delete('/users', (req, res, next) => {
 router.get('/users/:username', (req, res, next) => {
   const { username } = req.params;
 
-  console.log(username);
-
   knex('users')
     .where('username', username)
     .first()
@@ -157,6 +155,7 @@ router.get('/users/:username', (req, res, next) => {
       const user = camelizeKeys(row);
 
       delete user.hashedPassword;
+      delete user.id;
 
       res.send(user);
     })

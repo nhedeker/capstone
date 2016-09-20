@@ -4,7 +4,8 @@ import TextField from 'material-ui/TextField';
 
 const Login = React.createClass({
   handleTouchTap() {
-    this.props.loginUser(this.props.userAuth.email, this.props.userAuth.password);
+    this.props.loginUser(this.props.userAuth.email,
+      this.props.userAuth.password);
   },
 
   render() {

@@ -216,3 +216,38 @@ export const search = (event) => {
     dispatch(filterBySearch());
   };
 };
+
+export const showUserRecipes = (username) => {
+  return {
+    type: 'FILTER_BY_USER',
+    username
+  };
+};
+
+export const getUserPageData = (username) => {
+  return (dispatch) => {
+    dispatch(fetchRecipes())
+      .then(() => {
+        return dispatch(fetchUser(username));
+      })
+      .then(() => {
+        dispatch(showUserRecipes(username));
+      });
+  };
+};
+
+export const goToMain = () => {
+  return (dispatch) => {
+    dispatch(fetchRecipes())
+      .then(() => {
+        const event = {
+          target: {
+            textContent: 'Newest'
+          }
+        };
+
+        dispatch(updateRecipeOrder(event));
+        dispatch(push('/'));
+      });
+  };
+};

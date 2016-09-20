@@ -9,8 +9,11 @@ const Main = React.createClass({
     this.props.fetchRecipes();
   },
 
+  handleTitleTouchTap() {
+    this.props.goToMain();
+  },
+
   render() {
-    console.log(this.props.errors);
     const styleTitle = {
       maxWidth: '100vw',
       minWidth: '150px',
@@ -25,7 +28,7 @@ const Main = React.createClass({
     return <div>
       <AppBar
         className="appBar"
-        onTitleTouchTap={() => { browserHistory.push('/') }}
+        onTitleTouchTap={this.handleTitleTouchTap}
         showMenuIconButton={false}
         style={styleAppBar}
         title="NameOfApp"
