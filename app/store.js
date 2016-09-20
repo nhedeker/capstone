@@ -13,7 +13,8 @@ const recipes = {
   showRecipes: [],
   liked: [],
   order: 'Newest',
-  showLiked: cookie.load('loggedIn') || false
+  showLiked: cookie.load('loggedIn') || false,
+  searchTerm: ''
 };
 
 const userAuth = {

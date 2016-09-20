@@ -11,6 +11,7 @@ import TextField from 'material-ui/TextField';
 const AppBarActions = React.createClass({
   render() {
     const handleOrderChange = this.props.updateRecipeOrder;
+    const handleSearchTermChange = this.props.search;
 
     const appBarThemeColor = 'white';
 
@@ -30,9 +31,11 @@ const AppBarActions = React.createClass({
       <TextField
         fullWidth={true}
         hintText="Search"
+        onChange={handleSearchTermChange}
         type="text"
         underlineFocusStyle={styleSearchUnderlineFocused}
         underlineStyle={styleSearchUnderline}
+        value={this.props.recipes.searchTerm}
       />
       <DropDownMenu
         labelStyle={{ color: appBarThemeColor }}

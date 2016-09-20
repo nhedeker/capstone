@@ -153,13 +153,13 @@ export const updateUserAuthErrors = (event) => {
   };
 };
 
-export const updateRecipeOrder = (event, index, value) => {
+export const updateRecipeOrder = (event) => {
   let action;
 
-  if (value === 'Newest') {
+  if (event.target.textContent === 'Newest') {
     action = 'ORDER_BY_NEWEST';
   }
-  else if (value === 'Popular') {
+  else if (event.target.textContent === 'Popular') {
     action = 'ORDER_BY_POPULAR';
   }
   else {
@@ -168,5 +168,25 @@ export const updateRecipeOrder = (event, index, value) => {
 
   return {
     type: action
+  };
+};
+
+export const updateSearchTerm = (searchValue) => {
+  return {
+    type: 'UPDATE_SEARCH_TERM',
+    searchValue
+  };
+};
+
+export const filterBySearch = () => {
+  return {
+    type: 'FILTER_BY_SEARCH'
+  };
+};
+
+export const search = (event) => {
+  return (dispatch) => {
+    dispatch(updateSearchTerm(event.target.value));
+    dispatch(filterBySearch());
   };
 };
