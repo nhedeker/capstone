@@ -1,5 +1,6 @@
 import _ from 'lodash';
 
+// eslint-disable-next-line max-statements
 const recipes = (state = [], action) => {
   switch (action.type) {
     case 'REQUEST_RECIPES': {
@@ -18,8 +19,7 @@ const recipes = (state = [], action) => {
 
       return Object.assign({}, state, {
         order: 'Newest',
-        showRecipes: orderedRecipes,
-        // recipes: orderedRecipes
+        showRecipes: orderedRecipes
       });
     }
     case 'ORDER_BY_POPULAR': {
@@ -27,8 +27,7 @@ const recipes = (state = [], action) => {
 
       return Object.assign({}, state, {
         order: 'Popular',
-        showRecipes: orderedRecipes,
-        // recipes: orderedRecipes
+        showRecipes: orderedRecipes
       });
     }
     case 'UPDATE_SEARCH_TERM': {
