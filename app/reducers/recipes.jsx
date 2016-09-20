@@ -74,6 +74,11 @@ const recipes = (state = [], action) => {
         showRecipes: filteredRecipes
       });
     }
+    case 'UPDATE_LIKED': {
+      return Object.assign({}, state, {
+        liked: action.liked
+      });
+    }
     default:
       return state;
   }

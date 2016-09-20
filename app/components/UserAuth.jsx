@@ -3,8 +3,15 @@ import Login from './Login';
 import Paper from 'material-ui/Paper';
 import React from 'react';
 import Register from './Register';
+import { withRouter } from 'react-router';
 
 const UserAuth = React.createClass({
+  componentWillMount() {
+    if (this.props.userAuth.loggedIn) {
+      this.props.router.push('/');
+    }
+  },
+
   render() {
     return <Paper className="userAuthPaper">
       <Tabs inkBarStyle={{ backgroundColor: 'orange', height: '2.5px' }}>
@@ -21,4 +28,4 @@ const UserAuth = React.createClass({
   }
 });
 
-export default UserAuth;
+export default withRouter(UserAuth);

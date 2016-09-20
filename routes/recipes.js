@@ -1,6 +1,7 @@
 'use strict';
 const { camelizeKeys, decamelizeKeys } = require('humps');
 const boom = require('boom');
+const { checkAuth } = require('../middleware');
 const ev = require('express-validation');
 const express = require('express');
 const knex = require('../knex');
@@ -41,7 +42,7 @@ router.get('/recipes', (req, res, next) => {
     });
 });
 
-router.post('/recipes', (req, res, next) => {
+router.post('/recipes', checkAuth, (req, res, next) => {
   const { userId } = req.token;
   const { name, description, imgUrl } = req.body;
   let { ingredients, instructions } = req.body;

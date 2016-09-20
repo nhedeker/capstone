@@ -36,8 +36,7 @@ const userAuth = {
     email: '',
     password: '',
     username: ''
-  },
-  likes: {}
+  }
 };
 
 const errors = {

@@ -1,6 +1,7 @@
 'use strict';
 
 const { camelizeKeys, decamelizeKeys } = require('humps');
+const { checkAuth } = require('../middleware');
 const ev = require('express-validation');
 const express = require('express');
 const knex = require('../knex');
@@ -9,8 +10,25 @@ const validations = require('../validations/likes');
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
+// Gets all like entries for a user in the like table
+router.get('/likes', checkAuth, (req, res, next) => {
+  const { userId } = req.token;
+
+  knex('likes')
+    .select('recipe_id')
+    .where('user_id', userId)
+  .then((rows) => {
+    const likes = camelizeKeys(rows[0]);
+
+    res.send(likes);
+  })
+  .catch((err) => {
+    next(err);
+  });
+});
+
 // Creates new user like entry in likes table
-router.post('/users/likes', (req, res, next) => {
+router.post('/likes', checkAuth, (req, res, next) => {
   const { recipeId } = req.body;
   const { userId } = req.token;
 
@@ -48,25 +66,8 @@ router.post('/users/likes', (req, res, next) => {
   });
 });
 
-// Gets all like entries for a user in the like table
-router.get('/users/likes', (req, res, next) => {
-  const { userId } = req.token;
-
-  knex('likes')
-    .select('recipe_id')
-    .where('user_id', userId)
-  .then((rows) => {
-    const likes = camelizeKeys(rows[0]);
-
-    res.send(likes);
-  })
-  .catch((err) => {
-    next(err);
-  });
-});
-
 // Deletes a like entry with the like table
-router.delete('/users/likes', (req, res, next) => {
+router.delete('/likes', checkAuth, (req, res, next) => {
   const { recipeId } = req.body;
   const { userId } = req.token;
 

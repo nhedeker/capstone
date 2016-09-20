@@ -44,6 +44,25 @@ export const fetchRecipes = () => {
   };
 };
 
+export const updateLikedRecipes = (data) => {
+  return {
+    type: 'UPDATE_LIKED',
+    liked: data
+  };
+};
+
+export const getLikedRecipes = () => {
+  return (dispatch) => {
+    return axios.get('/api/likes')
+      .then((res) => {
+        return dispatch(updateLikedRecipes(res.data));
+      })
+      .catch((err) => {
+        dispatch(updateErrorMessage(err));
+      });
+  };
+};
+
 export const requestUser = () => {
   return {
     type: 'REQUEST_USER',
@@ -109,10 +128,45 @@ export const loginUser = (email, password) => {
         dispatch(resetLoginForm());
         dispatch(updateLogin());
         dispatch(loggedInUser());
+        dispatch(getLikedRecipes());
         dispatch(push('/'));
       })
       .catch((err) => {
         dispatch(updateErrorMessage(err));
+      });
+  };
+};
+
+export const updateRecipeOrder = (event) => {
+  let action;
+
+  if (event.target.textContent === 'Newest') {
+    action = 'ORDER_BY_NEWEST';
+  }
+  else if (event.target.textContent === 'Popular') {
+    action = 'ORDER_BY_POPULAR';
+  }
+  else {
+    action = 'ORDER_BY_LIKED';
+  }
+
+  return {
+    type: action
+  };
+};
+
+export const goToMain = () => {
+  return (dispatch) => {
+    dispatch(fetchRecipes())
+      .then(() => {
+        const event = {
+          target: {
+            textContent: 'Newest'
+          }
+        };
+
+        dispatch(updateRecipeOrder(event));
+        dispatch(push('/'));
       });
   };
 };
@@ -122,7 +176,7 @@ export const logoutUser = () => {
     return axios.delete('/api/token')
       .then((_res) => {
         dispatch(updateLogin());
-        dispatch(push('/'));
+        dispatch(goToMain());
       })
       .catch((err) => {
         dispatch(updateErrorMessage(err));
@@ -179,24 +233,6 @@ export const updateUserAuth = (event) => {
   };
 };
 
-export const updateRecipeOrder = (event) => {
-  let action;
-
-  if (event.target.textContent === 'Newest') {
-    action = 'ORDER_BY_NEWEST';
-  }
-  else if (event.target.textContent === 'Popular') {
-    action = 'ORDER_BY_POPULAR';
-  }
-  else {
-    action = 'ORDER_BY_LIKED';
-  }
-
-  return {
-    type: action
-  };
-};
-
 export const updateSearchTerm = (searchValue) => {
   return {
     type: 'UPDATE_SEARCH_TERM',
@@ -232,22 +268,6 @@ export const getUserPageData = (username) => {
       })
       .then(() => {
         dispatch(showUserRecipes(username));
-      });
-  };
-};
-
-export const goToMain = () => {
-  return (dispatch) => {
-    dispatch(fetchRecipes())
-      .then(() => {
-        const event = {
-          target: {
-            textContent: 'Newest'
-          }
-        };
-
-        dispatch(updateRecipeOrder(event));
-        dispatch(push('/'));
       });
   };
 };
