@@ -8,7 +8,7 @@ import React from 'react';
 
 const Recipe = React.createClass({
   populateRender() {
-    const { recipes, showLiked } = this.props.recipes;
+    const { recipes } = this.props.recipes;
     const { recipeCode } = this.props.params;
     const recipeI = recipes.findIndex((element) =>
       element.code === recipeCode);
@@ -16,7 +16,7 @@ const Recipe = React.createClass({
     const recipe = recipes[recipeI];
 
     const styleLikeButton = {
-      display: showLiked ? 'inline-block' : 'none'
+      display: this.props.userAuth.loggedIn ? 'inline-block' : 'none'
     };
 
     return <div>

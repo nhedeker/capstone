@@ -13,7 +13,6 @@ const recipes = {
   showRecipes: [],
   liked: [],
   order: 'Newest',
-  showLiked: cookie.load('loggedIn') || false,
   searchTerm: '',
   newRecipe: {
     name: '',
@@ -38,10 +37,16 @@ const userAuth = {
   likes: {}
 };
 
+const errors = {
+  errorMessage: '',
+  showError: false
+};
+
 const defaultState = {
   recipes,
   users,
-  userAuth
+  userAuth,
+  errors
 };
 
 const loggerMiddleware = createLogger();

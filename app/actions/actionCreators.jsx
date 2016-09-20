@@ -2,11 +2,16 @@ import axios from 'axios';
 import cookie from 'react-cookie';
 import { push } from 'react-router-redux';
 
-// increment like
-export const increment = (index) => {
+export const handleCloseError = () => {
   return {
-    type: 'INCREMENT_LIKES',
-    index
+    type: 'CLOSE_ERROR_MESSAGE'
+  };
+};
+
+export const updateErrorMessage = (newError) => {
+  return {
+    type: 'UPDATE_ERROR_MESSAGE',
+    newErrorMessage: newError.response || newError.message
   };
 };
 
@@ -32,6 +37,9 @@ export const fetchRecipes = () => {
     return axios.get('/api/recipes')
       .then((res) => {
         return dispatch(receiveRecipes(res.data));
+      })
+      .catch((err) => {
+        dispatch(updateErrorMessage(err));
       });
   };
 };
@@ -58,6 +66,9 @@ export const fetchUser = (username) => {
     return axios.get(`/api/users/${username}`)
       .then((res) => {
         return dispatch(receiveUser(res.data));
+      })
+      .catch((err) => {
+        dispatch(updateErrorMessage(err));
       });
   };
 };
@@ -97,6 +108,9 @@ export const loginUser = (email, password) => {
         dispatch(updateLogin());
         dispatch(loggedInUser());
         dispatch(push('/'));
+      })
+      .catch((err) => {
+        dispatch(updateErrorMessage(err));
       });
   };
 };
@@ -121,6 +135,9 @@ export const registerUser = (email, password, username) => {
       .then((_res) => {
         dispatch(registeredUser());
         dispatch(loginUser(email, password));
+      })
+      .catch((err) => {
+        dispatch(updateErrorMessage(err));
       });
   };
 };

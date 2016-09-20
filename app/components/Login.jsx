@@ -3,6 +3,10 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 
 const Login = React.createClass({
+  handleTouchTap() {
+    this.props.loginUser(this.props.userAuth.email, this.props.userAuth.password);
+  },
+
   render() {
     const { email, password, errors } = this.props.userAuth;
 
@@ -43,6 +47,7 @@ const Login = React.createClass({
         disabled={toDisable}
         label="Log In"
         labelStyle={styleUserAuthButtonLabel}
+        onTouchTap={this.handleTouchTap}
         primary={true}
         style={styleUserAuthButton}
       />

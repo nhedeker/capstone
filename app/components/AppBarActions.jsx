@@ -54,7 +54,7 @@ const AppBarActions = React.createClass({
         />
         <MenuItem
           primaryText="Liked"
-          style={{ display: this.props.recipes.showLiked ? 'block' : 'none' }}
+          style={{ display: this.props.userAuth.loggedIn ? 'block' : 'none' }}
           value="Liked"
         />
       </DropDownMenu>

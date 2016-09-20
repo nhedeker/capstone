@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
   return {
     recipes: state.recipes,
     users: state.users,
-    userAuth: state.userAuth
+    userAuth: state.userAuth,
+    errors: state.errors
   };
 };
 
