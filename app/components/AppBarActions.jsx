@@ -10,6 +10,8 @@ import TextField from 'material-ui/TextField';
 
 const AppBarActions = React.createClass({
   render() {
+    const handleOrderChange = this.props.updateRecipeOrder;
+
     const appBarThemeColor = 'white';
 
     const styleLabel = {
@@ -32,18 +34,24 @@ const AppBarActions = React.createClass({
         underlineFocusStyle={styleSearchUnderlineFocused}
         underlineStyle={styleSearchUnderline}
       />
-      <DropDownMenu value={"temp"}>
+      <DropDownMenu
+        labelStyle={{ color: appBarThemeColor }}
+        onChange={handleOrderChange}
+        underlineStyle={styleSearchUnderline}
+        value={this.props.recipes.order}
+      >
         <MenuItem
           primaryText="Newest"
-          value={"newest"}
+          value="Newest"
         />
         <MenuItem
           primaryText="Popular"
-          value={"popular"}
+          value="Popular"
         />
         <MenuItem
           primaryText="Liked"
-          value={"liked"}
+          style={{ display: this.props.recipes.showLiked ? 'block' : 'none' }}
+          value="Liked"
         />
       </DropDownMenu>
       <Link to={"/newrecipe"}>

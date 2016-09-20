@@ -43,7 +43,7 @@ router.get('/recipes', (req, res, next) => {
 
 router.post('/recipes', (req, res, next) => {
   const { userId } = req.token;
-  const { name, description } = req.body;
+  const { name, description, imgUrl } = req.body;
   let { ingredients, instructions } = req.body;
 
   const code =

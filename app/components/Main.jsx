@@ -29,7 +29,9 @@ const Main = React.createClass({
         title="NameOfApp"
         titleStyle={styleTitle}
       >
-        <AppBarActions className="appBarActions" />
+        {React.cloneElement(
+          <AppBarActions className="appBarActions" />, this.props)
+        }
       </AppBar>
       <div className="appContentsContainer">
         {React.cloneElement(this.props.children, this.props)}

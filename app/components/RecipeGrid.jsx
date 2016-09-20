@@ -3,10 +3,11 @@ import SmallRecipe from './SmallRecipe';
 
 const RecipeGrid = React.createClass({
   mapRecipes() {
-    const { recipes } = this.props.recipes;
+    const recipes = this.props.recipes.showRecipes;
+    const { showLiked } = this.props.recipes;
 
     return recipes.map((element, index) => {
-      return <SmallRecipe key={index} recipe={element} />;
+      return <SmallRecipe key={index} recipe={element} showLiked={showLiked} />;
     });
   },
 

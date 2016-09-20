@@ -5,6 +5,12 @@ import TextField from 'material-ui/TextField';
 
 const Login = React.createClass({
   render() {
+    const { email, password } = this.props.userAuth;
+
+    const handleEmailUpdate = this.props.updateUserAuthEmail;
+
+    const handlePasswordUpdate = this.props.updateUserAuthPassword;
+
     const styleUserAuthButtonLabel = {
       textTransform: 'inital'
     };
@@ -19,11 +25,15 @@ const Login = React.createClass({
     return <div className="userAuthTabContentContainer">
       <TextField
         floatingLabelText="Email"
+        onChange={handleEmailUpdate}
         type="text"
+        value={email}
       />
       <TextField
         floatingLabelText="Password"
+        onChange={handlePasswordUpdate}
         type="password"
+        value={password}
       />
       <RaisedButton
         className="userAuthButton"

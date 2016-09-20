@@ -8,13 +8,16 @@ import React from 'react';
 
 const Recipe = React.createClass({
   populateRender() {
-    const { recipes } = this.props.recipes;
+    const { recipes, showLiked } = this.props.recipes;
     const { recipeCode } = this.props.params;
-
     const recipeI = recipes.findIndex((element) =>
       element.code === recipeCode);
 
     const recipe = recipes[recipeI];
+
+    const styleLikeButton = {
+      display: showLiked ? 'inline-block' : 'none'
+    };
 
     return <div>
       <div className="recipeImgContainer">
@@ -23,6 +26,7 @@ const Recipe = React.createClass({
           icon={<Favorite />}
           label="like"
           primary={true}
+          style={styleLikeButton}
         />
         <img className="recipeImg" src={recipe.imgUrl} />
       </div>
@@ -46,6 +50,7 @@ const Recipe = React.createClass({
           icon={<Favorite />}
           label="like"
           primary={true}
+          style={styleLikeButton}
         />
       </div>
     </div>;
@@ -59,7 +64,7 @@ const Recipe = React.createClass({
 
     let childElement = null;
 
-    if (this.props.recipes && this.props.recipes.recipes) {
+    if (this.props.recipes && this.props.recipes.recipes.length) {
       childElement = this.populateRender();
     }
 

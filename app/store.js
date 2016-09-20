@@ -1,23 +1,43 @@
-import { applyMiddleware, compose, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
+import cookie from 'react-cookie';
 import createLogger from 'redux-logger';
 import rootReducer from './reducers/index';
-import { syncHistoryWithStore } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
 
-const recipes = { requestingRecipes: true };
-const users = users;
+let users;
+
+const recipes = {
+  recipes: [],
+  showRecipes: [],
+  liked: [],
+  order: 'Newest',
+  showLiked: cookie.load('loggedIn') || false
+};
+
+const userAuth = {
+  email: '',
+  password: '',
+  username: '',
+  loggedIn: cookie.load('loggedIn') || false,
+  user: cookie.load('user') || null,
+  errors: {},
+  likes: {}
+};
 
 const defaultState = {
   recipes,
-  users
+  users,
+  userAuth
 };
 
 const loggerMiddleware = createLogger();
 
 const store = createStore(rootReducer, defaultState, applyMiddleware(
   thunkMiddleware,
-  loggerMiddleware
+  loggerMiddleware,
+  routerMiddleware(browserHistory)
 ));
 
 export const history = syncHistoryWithStore(browserHistory, store);

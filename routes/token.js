@@ -31,8 +31,7 @@ router.post('/token', (req, res, next) => {
     .then(() => {
       const token = jwt.sign(
         {
-          userId: user.id,
-          userUsername: user.username
+          userId: user.id
         }, process.env.JWT_SECRET);
 
       res.cookie('accessToken', token, {
@@ -41,6 +40,10 @@ router.post('/token', (req, res, next) => {
       });
 
       res.cookie('loggedIn', true, {
+        secure: router.get('env') === 'production'
+      });
+
+      res.cookie('user', user.id, {
         secure: router.get('env') === 'production'
       });
 

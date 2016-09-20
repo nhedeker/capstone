@@ -5,7 +5,7 @@ import React from 'react';
 const Instructions = React.createClass({
   render() {
     // let i = 0;
-    //
+
     // const initial = <div
     //   className="instructionCounter"
     //   style={{ display: 'flex' }}
@@ -25,13 +25,13 @@ const Instructions = React.createClass({
         return <ListItem
           key={index}
           leftIcon={
-            <CheckCircle color={'#ffa726'} />
-            // <div
-            //   className="instructionCounter"
-            //   style={{ display: 'flex' }}
-            // >
-            //   <div>{index + 1}</div>
-            // </div>
+            // <CheckCircle color={'#ffa726'} />
+            <div
+              className="instructionCounter"
+              style={{ display: 'flex' }}
+            >
+              <div>{index + 1}</div>
+            </div>
           }
           primaryText={instruction}
           style={styleListItem}
