@@ -94,7 +94,9 @@ export const resetLoginForm = () => {
 export const updateLogin = () => {
   return {
     type: 'UPDATE_LOGIN',
-    loggedIn: cookie.load('loggedIn')
+    loggedIn: cookie.load('loggedIn'),
+    userId: cookie.load('userId'),
+    username: cookie.load('username')
   };
 };
 
@@ -107,6 +109,19 @@ export const loginUser = (email, password) => {
         dispatch(resetLoginForm());
         dispatch(updateLogin());
         dispatch(loggedInUser());
+        dispatch(push('/'));
+      })
+      .catch((err) => {
+        dispatch(updateErrorMessage(err));
+      });
+  };
+};
+
+export const logoutUser = () => {
+  return (dispatch) => {
+    return axios.delete('/api/token')
+      .then((_res) => {
+        dispatch(updateLogin());
         dispatch(push('/'));
       })
       .catch((err) => {

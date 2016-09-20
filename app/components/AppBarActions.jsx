@@ -13,6 +13,7 @@ const AppBarActions = React.createClass({
     const handleOrderChange = this.props.updateRecipeOrder;
     const handleSearchTermChange = this.props.search;
     const loggedIn = this.props.userAuth.loggedIn;
+    const user = this.props.userAuth.user.username;
 
     const appBarThemeColor = 'white';
 
@@ -63,7 +64,10 @@ const AppBarActions = React.createClass({
           <AddCircle color={appBarThemeColor} />
         </IconButton>
       </Link>
-      <Link style={{ display: loggedIn ? 'block' : 'none' }} to={"/user/temp"}>
+      <Link
+        style={{ display: loggedIn ? 'block' : 'none' }}
+        to={`/user/${user}`}
+      >
         <IconButton>
           <AccountCircle color={appBarThemeColor} />
         </IconButton>

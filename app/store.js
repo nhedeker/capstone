@@ -28,7 +28,10 @@ const userAuth = {
   password: '',
   username: '',
   loggedIn: cookie.load('loggedIn') || false,
-  user: cookie.load('user') || null,
+  user: {
+    userId: cookie.load('userId') || null,
+    username: cookie.load('username') || null
+  },
   errors: {
     email: '',
     password: '',

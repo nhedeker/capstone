@@ -14,14 +14,14 @@ const User = React.createClass({
 
   populateRender() {
     const { user } = this.props.users;
+    const { logoutUser } = this.props;
+    const { loggedIn } = this.props.userAuth;
 
     const stylePaper = {
       borderRadius: '1rem',
       paddingRight: '1rem',
       paddingLeft: '1rem',
       color: '#555555'
-      // marginTop: '5rem',
-      // marginBottom: '5rem'
     };
 
     const styleRecipeTitle = {
@@ -38,8 +38,6 @@ const User = React.createClass({
     const smallIconButton = {
       width: '72px',
       height: '72px',
-      // marginTop: '.25rem',
-      // padding: '16px',
       borderRadius: '50%',
       zIndex: 1
     };
@@ -67,12 +65,13 @@ const User = React.createClass({
                   <SettingsIcon color="#b2b1b0" />
                 </IconButton>
               }
+              style={{ display: loggedIn ? 'inline-block' : 'none' }}
               targetOrigin={{ horizontal: 'left', vertical: 'top' }}
             >
               <Link className="linkNormalize" to={"/settings"}>
                 <MenuItem primaryText="Settings" />
               </Link>
-              <MenuItem primaryText="Logout" />
+              <MenuItem onTouchTap={logoutUser} primaryText="Logout" />
             </IconMenu>
           </div>
           <p>{`${user.bio.trim() ? user.bio : ''}`}</p>

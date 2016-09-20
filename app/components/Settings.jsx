@@ -4,8 +4,15 @@ import Paper from 'material-ui/Paper';
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import users from '../data/users';
+import { withRouter } from 'react-router';
 
 const Settings = React.createClass({
+  componentWillMount() {
+    if (!this.props.userAuth.loggedIn) {
+      this.props.router.push('/notfound');
+    }
+  },
+
   render() {
     const stylePaper = {
       borderRadius: '1rem',
@@ -101,4 +108,4 @@ const Settings = React.createClass({
   }
 });
 
-export default Settings;
+export default withRouter(Settings);

@@ -45,7 +45,11 @@ router.post('/token', (req, res, next) => {
         secure: router.get('env') === 'production'
       });
 
-      res.cookie('user', user.id, {
+      res.cookie('username', user.username, {
+        secure: router.get('env') === 'production'
+      });
+
+      res.cookie('userId', user.id, {
         secure: router.get('env') === 'production'
       });
 

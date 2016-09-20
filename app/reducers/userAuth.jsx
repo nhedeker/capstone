@@ -15,8 +15,14 @@ const userAuth = (state = [], action) => {
       });
     }
     case 'UPDATE_LOGIN': {
+      const newUser = Object.assign({}, state.user, {
+        userId: action.userId,
+        username: action.username
+      });
+
       return Object.assign({}, state, {
-        loggedIn: action.loggedIn
+        loggedIn: action.loggedIn,
+        user: newUser
       });
     }
     case 'UPDATE_USERAUTH_DATA': {
