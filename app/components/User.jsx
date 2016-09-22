@@ -11,9 +11,9 @@ const User = React.createClass({
     this.props.getUserPageData(this.props.params.user);
   },
 
-  // componentWillReceiveProps() {
-  //   this.props.getUserPageData(this.props.params.user);
-  // },
+  componentWillUnmount() {
+    this.props.clearUser(); // WRITE CODE FOR THIS
+  },
 
   populateRender() {
     const { user } = this.props.users;

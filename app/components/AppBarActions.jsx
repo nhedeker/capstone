@@ -4,6 +4,7 @@ import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import React from 'react';
 import TextField from 'material-ui/TextField';
@@ -14,7 +15,7 @@ const AppBarActions = React.createClass({
   },
 
   render() {
-    const handleOrderChange = this.props.updateRecipeOrder;
+    const handleOrderChange = this.props.order;
     const handleSearchTermChange = this.props.search;
     const loggedIn = this.props.userAuth.loggedIn;
     const user = this.props.userAuth.user.username;
@@ -68,14 +69,32 @@ const AppBarActions = React.createClass({
           <AddCircle color={appBarThemeColor} />
         </IconButton>
       </Link> */}
-      <Link
+      {/* <Link
         style={{ display: loggedIn ? 'block' : 'none' }}
         to={`/user/${user}`}
       >
         <IconButton>
           <AccountCircle color={appBarThemeColor} />
         </IconButton>
-      </Link>
+      </Link> */}
+      <IconMenu
+        anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+        iconButtonElement={
+          <IconButton
+            // iconStyle={smallIcon}
+            // style={smallIconButton}
+          >
+            <AccountCircle color={appBarThemeColor} />
+          </IconButton>
+        }
+        style={{ display: loggedIn ? 'block' : 'none' }}
+        targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+      >
+        {/* <Link className="linkNormalize" to={"/settings"}>
+          <MenuItem primaryText="Settings" />
+        </Link> */}
+        <MenuItem onTouchTap={this.props.logoutUser} primaryText="Logout" />
+      </IconMenu>
       <FlatButton
         className="appBarButtons"
         hoverColor="#00acc1"

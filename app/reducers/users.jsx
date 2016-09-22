@@ -8,6 +8,11 @@ const users = (state = [], action) => {
         user: action.user
       });
     }
+    case 'CLEAR_USER': {
+      return Object.assign({}, state, {
+        user: null
+      });
+    }
     default:
       return state;
   }

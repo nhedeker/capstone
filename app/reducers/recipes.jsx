@@ -12,32 +12,9 @@ const recipes = (state = [], action) => {
         showRecipes: action.recipes
       });
     }
-    case 'ORDER_BY_NEWEST': {
-      const orderedRecipes = _.orderBy(
-        state.showRecipes, ['createdAt'], ['desc']
-      );
-
+    case 'UPDATE_RECIPE_ORDER': {
       return Object.assign({}, state, {
-        order: 'Newest',
-        showRecipes: orderedRecipes
-      });
-    }
-    case 'ORDER_BY_POPULAR': {
-      const orderedRecipes = _.orderBy(state.showRecipes, ['likes'], ['desc']);
-
-      return Object.assign({}, state, {
-        order: 'Popular',
-        showRecipes: orderedRecipes
-      });
-    }
-    case 'FILTER_BY_LIKES': {
-      const filteredRecipes = state.showRecipes.filter((recipe) => {
-        return state.liked.includes(recipe.id);
-      });
-
-      return Object.assign({}, state, {
-        order: 'Liked',
-        showRecipes: filteredRecipes
+        order: action.order
       });
     }
     case 'UPDATE_SEARCH_TERM': {
@@ -54,32 +31,35 @@ const recipes = (state = [], action) => {
         showRecipes: filteredRecipes
       });
     }
-    case 'FILTER_BY_SEARCH': {
-      if (!state.searchTerm.trim()) {
-        return Object.assign({}, state, {
-          showRecipes: state.recipes
+    case 'DISPLAY_RECIPES': {
+      let nextRecipes = state.recipes;
+
+      if (state.searchTerm.trim()) {
+        nextRecipes = state.recipes.filter((recipe) => {
+          return recipe.description.includes(state.searchTerm) ||
+            recipe.name.includes(state.searchTerm);
         });
       }
 
-      let filteredRecipes = state.recipes.filter((recipe) => {
-        return recipe.description.includes(state.searchTerm) ||
-          recipe.name.includes(state.searchTerm);
-      });
-
       if (state.order === 'Popular') {
-        filteredRecipes = _.orderBy(filteredRecipes, ['likes'], ['desc']);
+        nextRecipes = _.orderBy(nextRecipes, ['likes'], ['desc']);
       }
       else if (state.order === 'Newest') {
-        filteredRecipes = _.orderBy(filteredRecipes, ['createdAt'], ['desc']);
+        nextRecipes = _.orderBy(nextRecipes, ['createdAt'], ['desc']);
       }
       else if (state.order === 'Liked') {
-        filteredRecipes = filteredRecipes.filter((recipe) => {
+        nextRecipes = nextRecipes.filter((recipe) => {
           return state.liked.includes(recipe.id);
+        });
+      }
+      else if (state.order === 'User') {
+        nextRecipes = nextRecipes.filter((recipe) => {
+          return recipe.username === action.username;
         });
       }
 
       return Object.assign({}, state, {
-        showRecipes: filteredRecipes
+        showRecipes: nextRecipes
       });
     }
     case 'UPDATE_LIKED': {
@@ -98,9 +78,15 @@ const recipes = (state = [], action) => {
         });
       });
 
+      const updatedShowRecipes = state.showRecipes.map((recipe) => {
+        return Object.assign({}, recipe, {
+          liked: state.liked.includes(recipe.id)
+        });
+      });
+
       return Object.assign({}, state, {
         recipes: updatedRecipes,
-        showRecipes: updatedRecipes
+        showRecipes: updatedShowRecipes
       });
     }
     default:

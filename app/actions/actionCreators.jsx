@@ -64,25 +64,6 @@ export const getLikedRecipes = () => {
   };
 };
 
-export const fetchRecipes = () => {
-  return (dispatch) => {
-    dispatch(requestRecipes());
-
-    return axios.get('/api/recipes')
-      .then((res) => {
-        return dispatch(receiveRecipes(res.data));
-      })
-      .then(() => {
-        if (cookie.load('loggedIn')) {
-          return dispatch(getLikedRecipes());
-        }
-      })
-      .catch((err) => {
-        dispatch(updateErrorMessage(err));
-      });
-  };
-};
-
 export const requestUser = () => {
   return {
     type: 'REQUEST_USER',
@@ -160,52 +141,23 @@ export const loginUser = (email, password) => {
   };
 };
 
-export const updateRecipeOrder = (event) => {
-  let action = 'NULL';
-
-  if (event.target.textContent === 'Newest') {
-    action = 'ORDER_BY_NEWEST';
-  }
-  else if (event.target.textContent === 'Popular') {
-    action = 'ORDER_BY_POPULAR';
-  }
-  else if (event.target.textContent === 'Liked') {
-    action = 'FILTER_BY_LIKES';
-  }
-
-  return {
-    type: action
-  };
-};
-
-export const goToMain = () => {
-  return (dispatch) => {
-    dispatch(fetchRecipes())
-      .then(() => {
-        const event = {
-          target: {
-            textContent: 'Newest'
-          }
-        };
-
-        dispatch(updateRecipeOrder(event));
-        dispatch(push('/'));
-      });
-  };
-};
-
-export const logoutUser = () => {
-  return (dispatch) => {
-    return axios.delete('/api/token')
-      .then((_res) => {
-        dispatch(updateLogin());
-        dispatch(goToMain());
-      })
-      .catch((err) => {
-        dispatch(updateErrorMessage(err));
-      });
-  };
-};
+// export const updateRecipeOrder = (event) => {
+//   let action = 'NULL';
+//
+//   if (event.target.textContent === 'Newest') {
+//     action = 'ORDER_BY_NEWEST';
+//   }
+//   else if (event.target.textContent === 'Popular') {
+//     action = 'ORDER_BY_POPULAR';
+//   }
+//   else if (event.target.textContent === 'Liked') {
+//     action = 'FILTER_BY_LIKES';
+//   }
+//
+//   return {
+//     type: action
+//   };
+// };
 
 export const registeringUser = () => {
   return {
@@ -256,42 +208,30 @@ export const updateUserAuth = (event) => {
   };
 };
 
-export const updateSearchTerm = (searchValue) => {
-  return {
-    type: 'UPDATE_SEARCH_TERM',
-    searchValue
-  };
-};
-
-export const filterBySearch = () => {
-  return {
-    type: 'FILTER_BY_SEARCH'
-  };
-};
-
-export const search = (event) => {
-  return (dispatch) => {
-    dispatch(updateSearchTerm(event.target.value));
-    dispatch(filterBySearch());
-  };
-};
+// export const updateSearchTerm = (searchValue) => {
+//   return {
+//     type: 'UPDATE_SEARCH_TERM',
+//     searchValue
+//   };
+// };
+//
+// export const filterBySearch = () => {
+//   return {
+//     type: 'FILTER_BY_SEARCH'
+//   };
+// };
+//
+// export const search = (event) => {
+//   return (dispatch) => {
+//     dispatch(updateSearchTerm(event.target.value));
+//     dispatch(filterBySearch());
+//   };
+// };
 
 export const showUserRecipes = (username) => {
   return {
     type: 'FILTER_BY_USER',
     username
-  };
-};
-
-export const getUserPageData = (username) => {
-  return (dispatch) => {
-    dispatch(fetchRecipes())
-      .then(() => {
-        return dispatch(fetchUser(username));
-      })
-      .then(() => {
-        dispatch(showUserRecipes(username));
-      });
   };
 };
 
@@ -337,5 +277,108 @@ export const changeLikeStatus = (recipe) => {
 
   return (dispatch) => {
     dispatch(likeRecipe(recipe.id));
+  };
+};
+
+//new code
+export const updateRecipeOrder = (event) => {
+  return {
+    type: 'UPDATE_RECIPE_ORDER',
+    order: event.target.textContent
+  };
+};
+
+export const updateSearchTerm = (searchValue) => {
+  return {
+    type: 'UPDATE_SEARCH_TERM',
+    searchValue
+  };
+};
+
+export const displayRecipes = () => {
+  return {
+    type: 'DISPLAY_RECIPES'
+  };
+};
+
+export const search = (event) => {
+  return (dispatch) => {
+    dispatch(updateSearchTerm(event.target.value));
+    dispatch(displayRecipes());
+  };
+};
+
+export const order = (event) => {
+  return (dispatch) => {
+    dispatch(updateRecipeOrder(event));
+    dispatch(displayRecipes());
+  };
+};
+
+export const fetchRecipes = () => {
+  return (dispatch) => {
+    dispatch(requestRecipes());
+
+    return axios.get('/api/recipes')
+      .then((res) => {
+        return dispatch(receiveRecipes(res.data));
+      })
+      .then(() => {
+        if (cookie.load('loggedIn')) {
+          return dispatch(getLikedRecipes());
+        }
+      }).then(() => {
+        dispatch(displayRecipes());
+      })
+      .catch((err) => {
+        dispatch(updateErrorMessage(err));
+      });
+  };
+};
+
+export const goToMain = () => {
+  const event = {
+    target: {
+      textContent: 'Newest'
+    }
+  };
+
+  return (dispatch) => {
+    dispatch(updateRecipeOrder(event));
+    dispatch(fetchRecipes())
+    .then(() => {
+      dispatch(push('/'));
+    });
+  };
+};
+
+export const logoutUser = () => {
+  return (dispatch) => {
+    return axios.delete('/api/token')
+      .then((_res) => {
+        dispatch(updateLogin());
+        dispatch(goToMain());
+      })
+      .catch((err) => {
+        dispatch(updateErrorMessage(err));
+      });
+  };
+};
+
+export const getUserPageData = (username) => {
+  return (dispatch) => {
+    dispatch(fetchRecipes())
+      .then(() => {
+        return dispatch(fetchUser(username));
+      })
+      .then(() => {
+        dispatch(showUserRecipes(username));
+      });
+  };
+};
+
+export const clearUser = () => {
+  return {
+    type: 'CLEAR_USER'
   };
 };
