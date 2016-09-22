@@ -12,7 +12,7 @@ const User = React.createClass({
   },
 
   componentWillUnmount() {
-    this.props.clearUser(); // WRITE CODE FOR THIS
+    this.props.clearUser();
   },
 
   populateRender() {

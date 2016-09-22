@@ -36,8 +36,9 @@ const recipes = (state = [], action) => {
 
       if (state.searchTerm.trim()) {
         nextRecipes = state.recipes.filter((recipe) => {
-          return recipe.description.includes(state.searchTerm) ||
-            recipe.name.includes(state.searchTerm);
+          return recipe.name.toLowerCase().includes(
+            state.searchTerm.toLowerCase()
+          );
         });
       }
 
