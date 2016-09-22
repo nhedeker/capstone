@@ -9,9 +9,15 @@ export const handleCloseError = () => {
 };
 
 export const updateErrorMessage = (newError) => {
+  let newMessage = newError.message;
+
+  if (newError.response) {
+    newMessage = newError.response.data;
+  }
+
   return {
     type: 'UPDATE_ERROR_MESSAGE',
-    newErrorMessage: newError.response || newError.message
+    newErrorMessage: `Error: ${newMessage}`
   };
 };
 
