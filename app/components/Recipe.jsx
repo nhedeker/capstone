@@ -7,6 +7,18 @@ import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
 
 const Recipe = React.createClass({
+  handleLikeTouchTap(event) {
+    event.preventDefault();
+    const { recipes } = this.props.recipes;
+    const { recipeCode } = this.props.params;
+    const recipeI = recipes.findIndex((element) =>
+      element.code === recipeCode);
+
+    const recipe = recipes[recipeI];
+
+    this.props.changeLikeStatus(recipe);
+  },
+
   populateRender() {
     const { recipes } = this.props.recipes;
     const { recipeCode } = this.props.params;
@@ -15,6 +27,15 @@ const Recipe = React.createClass({
 
     const recipe = recipes[recipeI];
 
+    const buttonLabelColor = 'white';
+    let backgroundColor = '#00bcd4';
+    let buttonLabel = 'like';
+
+    if (recipe.liked) {
+      backgroundColor = '#ff1744';
+      buttonLabel = 'unlike';
+    }
+
     const styleLikeButton = {
       display: this.props.userAuth.loggedIn ? 'inline-block' : 'none'
     };
@@ -22,10 +43,12 @@ const Recipe = React.createClass({
     return <div>
       <div className="recipeImgContainer">
         <RaisedButton
+          backgroundColor={backgroundColor}
           className="recipeImgLikeButton"
           icon={<Favorite />}
-          label="like"
-          primary={true}
+          label={buttonLabel}
+          labelColor={buttonLabelColor}
+          onTouchTap={this.handleLikeTouchTap}
           style={styleLikeButton}
         />
         <img className="recipeImg" src={recipe.imgUrl} />
@@ -46,10 +69,12 @@ const Recipe = React.createClass({
         <h3 className="ingredientsTitle">Instructions</h3>
         <Instructions instructions={recipe.instructions} />
         <RaisedButton
+          backgroundColor={backgroundColor}
           className="recipeBottomLikeButton"
           icon={<Favorite />}
-          label="like"
-          primary={true}
+          label={buttonLabel}
+          labelColor={buttonLabelColor}
+          onTouchTap={this.handleLikeTouchTap}
           style={styleLikeButton}
         />
       </div>

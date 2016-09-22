@@ -30,6 +30,16 @@ const recipes = (state = [], action) => {
         showRecipes: orderedRecipes
       });
     }
+    case 'FILTER_BY_LIKES': {
+      const filteredRecipes = state.showRecipes.filter((recipe) => {
+        return state.liked.includes(recipe.id);
+      });
+
+      return Object.assign({}, state, {
+        order: 'Liked',
+        showRecipes: filteredRecipes
+      });
+    }
     case 'UPDATE_SEARCH_TERM': {
       return Object.assign({}, state, {
         searchTerm: action.searchValue
@@ -56,27 +66,41 @@ const recipes = (state = [], action) => {
           recipe.name.includes(state.searchTerm);
       });
 
-      let order;
-
       if (state.order === 'Popular') {
-        order = 'likes';
+        filteredRecipes = _.orderBy(filteredRecipes, ['likes'], ['desc']);
       }
       else if (state.order === 'Newest') {
-        order = 'newest';
+        filteredRecipes = _.orderBy(filteredRecipes, ['createdAt'], ['desc']);
       }
-      else {
-        // change order to likes somehow!
+      else if (state.order === 'Liked') {
+        filteredRecipes = filteredRecipes.filter((recipe) => {
+          return state.liked.includes(recipe.id);
+        });
       }
-
-      filteredRecipes = _.orderBy(filteredRecipes, [order], ['desc']);
 
       return Object.assign({}, state, {
         showRecipes: filteredRecipes
       });
     }
     case 'UPDATE_LIKED': {
+      const likes = _.map(action.liked, (element) => {
+        return element.recipeId;
+      });
+
       return Object.assign({}, state, {
-        liked: action.liked
+        liked: likes
+      });
+    }
+    case 'MAP_LIKED_DATA': {
+      const updatedRecipes = state.recipes.map((recipe) => {
+        return Object.assign({}, recipe, {
+          liked: state.liked.includes(recipe.id)
+        });
+      });
+
+      return Object.assign({}, state, {
+        recipes: updatedRecipes,
+        showRecipes: updatedRecipes
       });
     }
     default:

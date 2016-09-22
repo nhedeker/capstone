@@ -13,7 +13,7 @@ exports.seed = function(knex) {
         last_name: 'Hedeker',
         bio: 'Nerd extraordinaire who also loves trying new recipes!',
         username: 'DelightedDragon',
-        profile_img: 'http://www.pil-group.com/uploads/contacts/normal/noimage1.png',
+        profile_img: 'https://scontent.xx.fbcdn.net/v/t1.0-9/13139033_4012727953550_1598467760858565814_n.jpg?oh=fb5be333f6148d7ce76d0e21cd3e9eac&oe=586FAD5A',
         created_at: new Date('2016-07-26 14:26:16 UTC'),
         updated_at: new Date('2016-07-26 14:26:16 UTC')
       },
@@ -37,7 +37,7 @@ exports.seed = function(knex) {
         last_name: 'McGrady',
         bio: 'Math and coding genius who loves to cook',
         username: 'MathIsFun',
-        profile_img: 'http://www.pil-group.com/uploads/contacts/normal/noimage1.png',
+        profile_img: 'https://media.licdn.com/media/AAEAAQAAAAAAAAjYAAAAJDFlYWJlNzk3LTY5YzYtNDk3Yy1iNWQwLTAwZTkzOWVhZGY1OA.jpg',
         created_at: new Date('2016-07-26 14:26:16 UTC'),
         updated_at: new Date('2016-07-26 14:26:16 UTC')
       }

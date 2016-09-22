@@ -18,7 +18,7 @@ router.get('/likes', checkAuth, (req, res, next) => {
     .select('recipe_id')
     .where('user_id', userId)
   .then((rows) => {
-    const likes = camelizeKeys(rows[0]);
+    const likes = camelizeKeys(rows);
 
     res.send(likes);
   })
@@ -67,8 +67,8 @@ router.post('/likes', checkAuth, (req, res, next) => {
 });
 
 // Deletes a like entry with the like table
-router.delete('/likes', checkAuth, (req, res, next) => {
-  const { recipeId } = req.body;
+router.delete('/likes/:recipeId', checkAuth, (req, res, next) => {
+  const { recipeId } = req.params;
   const { userId } = req.token;
 
   knex('likes')
@@ -80,6 +80,9 @@ router.delete('/likes', checkAuth, (req, res, next) => {
     return knex('recipes')
       .where('id', recipeId)
       .decrement('likes', 1);
+  })
+  .then(() => {
+    return res.sendStatus(200);
   })
   .catch((err) => {
     next(err);

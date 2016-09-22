@@ -1,6 +1,5 @@
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
-import { Link } from 'react-router';
 import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
 import React from 'react';
@@ -12,10 +11,20 @@ const User = React.createClass({
     this.props.getUserPageData(this.props.params.user);
   },
 
+  // componentWillReceiveProps() {
+  //   this.props.getUserPageData(this.props.params.user);
+  // },
+
   populateRender() {
     const { user } = this.props.users;
     const { logoutUser } = this.props;
     const { loggedIn } = this.props.userAuth;
+
+    let sameUser = false;
+
+    if (loggedIn && user.id === this.props.userAuth.user.userId) {
+      sameUser = true;
+    }
 
     const stylePaper = {
       borderRadius: '1rem',
@@ -52,7 +61,7 @@ const User = React.createClass({
     return <div>
       <div className="profileUserInfoContainer">
         <Paper circle={true} style={{ width: '30%' }}>
-          <img className="profileUserImg" src="http://www.pil-group.com/uploads/contacts/normal/noimage1.png" />
+          <img className="profileUserImg" src={user.profileImg} />
         </Paper>
         <Paper className="profileUserInfo" style={stylePaper}>
           <div className="profileUserInfoHeader">
@@ -69,12 +78,12 @@ const User = React.createClass({
                   <SettingsIcon color="#b2b1b0" />
                 </IconButton>
               }
-              style={{ display: loggedIn ? 'inline-block' : 'none' }}
+              style={{ display: sameUser ? 'inline-block' : 'none' }}
               targetOrigin={{ horizontal: 'left', vertical: 'top' }}
             >
-              <Link className="linkNormalize" to={"/settings"}>
+              {/* <Link className="linkNormalize" to={"/settings"}>
                 <MenuItem primaryText="Settings" />
-              </Link>
+              </Link> */}
               <MenuItem onTouchTap={logoutUser} primaryText="Logout" />
             </IconMenu>
           </div>

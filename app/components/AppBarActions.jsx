@@ -9,6 +9,10 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 
 const AppBarActions = React.createClass({
+  handleLoginTouchTap() {
+    browserHistory.push('/login');
+  },
+
   render() {
     const handleOrderChange = this.props.updateRecipeOrder;
     const handleSearchTermChange = this.props.search;
@@ -59,11 +63,11 @@ const AppBarActions = React.createClass({
           value="Liked"
         />
       </DropDownMenu>
-      <Link style={{ display: loggedIn ? 'block' : 'none' }} to={"/newrecipe"}>
+      {/* <Link style={{ display: loggedIn ? 'block' : 'none' }} to={"/newrecipe"}>
         <IconButton>
           <AddCircle color={appBarThemeColor} />
         </IconButton>
-      </Link>
+      </Link> */}
       <Link
         style={{ display: loggedIn ? 'block' : 'none' }}
         to={`/user/${user}`}
@@ -77,7 +81,7 @@ const AppBarActions = React.createClass({
         hoverColor="#00acc1"
         label="Login/Sign-Up"
         labelStyle={styleLabel}
-        onTouchTap={() => { browserHistory.push('/login') }}
+        onTouchTap={this.handleLoginTouchTap}
         style={{ minWidth: '140px', display: loggedIn ? 'none' : 'block' }}
       />
     </div>;

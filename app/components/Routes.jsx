@@ -16,10 +16,10 @@ const Routes = React.createClass({
       <Route component={App} path="/">
         <IndexRoute component={RecipeGrid} />
         <Route component={Recipe} path="recipe/:recipeCode" />
-        <Route component={RecipeForm} path="recipe/:recipeCode/edit" />
-        <Route component={RecipeForm} path="newrecipe" />
+        {/* <Route component={RecipeForm} path="recipe/:recipeCode/edit" />
+        <Route component={RecipeForm} path="newrecipe" /> */}
         <Route component={UserAuth} path="login" />
-        <Route component={Settings} path="settings" />
+        {/* <Route component={Settings} path="settings" /> */}
         <Route component={User} path="user/:user" />
         <Route component={NotFound} path="*" />
         {/* make sure to add just /pin to NotFound */}

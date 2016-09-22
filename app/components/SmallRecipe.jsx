@@ -5,10 +5,23 @@ import Paper from 'material-ui/Paper';
 import React from 'react';
 
 const SmallRecipe = React.createClass({
+  handleLikeTouchTap(event) {
+    event.preventDefault();
+    const { recipe } = this.props;
+
+    this.props.changeLikeStatus(recipe);
+  },
+
   render() {
     const { recipe } = this.props;
 
     const userColor = '#00bcd4';
+
+    let backgroundColor = userColor;
+
+    if (recipe.liked) {
+      backgroundColor = '#ff1744';
+    }
 
     const styleLikeButton = {
       position: 'absolute',
@@ -16,7 +29,8 @@ const SmallRecipe = React.createClass({
       borderRadius: '50%',
       marginTop: '.25rem',
       marginLeft: '.25rem',
-      display: this.props.showLiked ? 'inline-block' : 'none'
+      display: this.props.showLiked ? 'inline-block' : 'none',
+      backgroundColor
     };
 
     const styleLikeButtonIcon = {
@@ -35,6 +49,7 @@ const SmallRecipe = React.createClass({
       <div className="recipeImgContainer">
         <IconButton
           iconStyle={styleLikeButtonIcon}
+          onTouchTap={this.handleLikeTouchTap}
           style={styleLikeButton}
         >
           <Favorite />

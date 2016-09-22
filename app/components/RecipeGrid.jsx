@@ -2,12 +2,22 @@ import React from 'react';
 import SmallRecipe from './SmallRecipe';
 
 const RecipeGrid = React.createClass({
+  componentWillMount() {
+    this.props.fetchRecipes();
+  },
+
   mapRecipes() {
     const recipes = this.props.recipes.showRecipes;
+    const likedRecipes = this.props.recipes.liked;
     const { loggedIn } = this.props.userAuth;
 
     return recipes.map((element, index) => {
-      return <SmallRecipe key={index} recipe={element} showLiked={loggedIn} />;
+      return React.cloneElement(<SmallRecipe
+        key={index}
+        liked={likedRecipes}
+        recipe={element}
+        showLiked={loggedIn}
+      />, this.props);
     });
   },
 
