@@ -2,7 +2,6 @@ import AddCircle from 'material-ui/svg-icons/content/add-circle';
 import Divider from 'material-ui/Divider';
 import GetApp from 'material-ui/svg-icons/action/get-app';
 import IconButton from 'material-ui/IconButton';
-import Image from 'material-ui/svg-icons/image/image';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';

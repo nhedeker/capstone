@@ -1,10 +1,9 @@
+import { Link, withRouter } from 'react-router';
 import FlatButton from 'material-ui/FlatButton';
-import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import users from '../data/users';
-import { withRouter } from 'react-router';
 
 const Settings = React.createClass({
   componentWillMount() {

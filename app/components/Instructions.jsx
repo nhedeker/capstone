@@ -1,5 +1,5 @@
 import { List, ListItem } from 'material-ui/List';
-import CheckCircle from 'material-ui/svg-icons/action/check-circle';
+// import CheckCircle from 'material-ui/svg-icons/action/check-circle';
 import React from 'react';
 
 const Instructions = React.createClass({

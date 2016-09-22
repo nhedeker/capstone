@@ -2,7 +2,6 @@ import AppBar from 'material-ui/AppBar';
 import AppBarActions from './AppBarActions';
 import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
-import { browserHistory } from 'react-router';
 
 const Main = React.createClass({
   componentWillMount() {

@@ -1,5 +1,4 @@
-import Joi from 'joi';
-
+// eslint-disable-next-line max-statements
 const userAuth = (state = [], action) => {
   switch (action.type) {
     case 'RESET_LOGIN': {

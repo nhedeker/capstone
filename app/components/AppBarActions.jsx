@@ -1,6 +1,6 @@
 import { Link, browserHistory } from 'react-router';
 import AccountCircle from 'material-ui/svg-icons/action/account-circle';
-import AddCircle from 'material-ui/svg-icons/content/add-circle';
+// import AddCircle from 'material-ui/svg-icons/content/add-circle';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
