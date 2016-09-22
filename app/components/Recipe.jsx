@@ -7,6 +7,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
 
 const Recipe = React.createClass({
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  },
+
   handleLikeTouchTap(event) {
     event.preventDefault();
     const { recipes } = this.props.recipes;

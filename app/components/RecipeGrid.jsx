@@ -6,6 +6,10 @@ const RecipeGrid = React.createClass({
     this.props.fetchRecipes();
   },
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  },
+
   mapRecipes() {
     const recipes = this.props.recipes.showRecipes;
     const likedRecipes = this.props.recipes.liked;

@@ -11,6 +11,10 @@ const User = React.createClass({
     this.props.getUserPageData(this.props.params.user);
   },
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  },
+
   componentWillUnmount() {
     this.props.clearUser();
   },
