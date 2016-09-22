@@ -25,7 +25,7 @@ exports.seed = function(knex) {
         last_name: '',
         bio: 'I\'m a puppy who wants to become a great chef!',
         username: 'StanleyPaddles',
-        profile_img: 'http://www.pil-group.com/uploads/contacts/normal/noimage1.png',
+        profile_img: 'https://scontent.xx.fbcdn.net/v/t1.0-9/12524111_10153648531684702_524934589044908510_n.jpg?oh=941e9665e75568bcafc0daa933814e9d&oe=5872042A',
         created_at: new Date('2016-07-26 14:26:16 UTC'),
         updated_at: new Date('2016-07-26 14:26:16 UTC')
       },
