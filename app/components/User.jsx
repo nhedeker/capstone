@@ -55,6 +55,12 @@ const User = React.createClass({
       zIndex: 1
     };
 
+    const stylePaperImg = {
+      width: '30%',
+      minWidth: '153px',
+      minHeight: '157px'
+    };
+
     let displayName = user.username;
 
     if (user.firstName) {
@@ -64,7 +70,7 @@ const User = React.createClass({
 
     return <div>
       <div className="profileUserInfoContainer">
-        <Paper circle={true} style={{ width: '30%' }}>
+        <Paper circle={true} style={stylePaperImg}>
           <img className="profileUserImg" src={user.profileImg} />
         </Paper>
         <Paper className="profileUserInfo" style={stylePaper}>

@@ -94,6 +94,8 @@ body {
   height: 100%;
   border-radius: 50%;
   margin: 0px;
+  min-width: 153px;
+  min-height: 157px;
 }
 
 .profileUserInfoContainer {
@@ -329,6 +331,7 @@ body {
   padding-right: 0;
   padding-left: 0;
   min-height: 25rem;
+  min-width: 500px;
 }
 
 .userAuthTabContentContainer {
