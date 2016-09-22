@@ -168,8 +168,8 @@ exports.seed = function(knex) {
         description: 'Ever wish you could get that restaurant-style rotisserie chicken at home? Well, with minimal preparation and about 5 hours\' cooking time (great for the weekends!) you can! I don\'t bother to baste the bird, though some like to for the first hour. The pan juices always caramelize at the bottom, and the chicken will turn golden brown...fall-off-the-bone good!',
         img_url: 'http://images.media-allrecipes.com/userphotos/720x405/46458.jpg',
         user_id: 3,
-        created_at: new Date('2016-08-08 14:26:16 UTC'),
-        updated_at: new Date('2016-08-08 14:26:16 UTC'),
+        created_at: new Date('2016-08-08 14:26:18 UTC'),
+        updated_at: new Date('2016-08-08 14:26:18 UTC'),
         ingredients: '["4 teaspoons salt","2 teaspoons paprika","1 teaspoon onion powder","1 teaspoon dried thyme","1 teaspoon white pepper","1/2 teaspoon cayenne pepper","1/2 teaspoon black pepper","1/2 teaspoon garlic powder","2 onions, quartered","2 (4 pound) whole chickens"]',
         instructions: '["In a small bowl, mix together salt, paprika, onion powder, thyme, white pepper, black pepper, cayenne pepper, and garlic powder. Remove and discard giblets from chicken. Rinse chicken cavity, and pat dry with paper towel. Rub each chicken inside and out with spice mixture. Place 1 onion into the cavity of each chicken. Place chickens in a resealable bag or double wrap with plastic wrap. Refrigerate overnight, or at least 4 to 6 hours.","Preheat oven to 250 degrees F (120 degrees C).","Place chickens in a roasting pan. Bake uncovered for 5 hours, to a minimum internal temperature of 180 degrees F (85 degrees C). Let the chickens stand for 10 minutes before carving."]'
       },
