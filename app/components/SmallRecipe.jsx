@@ -17,7 +17,7 @@ const SmallRecipe = React.createClass({
 
     const userColor = '#00bcd4';
 
-    let backgroundColor;
+    let backgroundColor = '#e5e5e5';
 
     if (recipe.liked) {
       backgroundColor = '#ff1744';
