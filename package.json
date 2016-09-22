@@ -12,7 +12,6 @@
     "node": "6.6.0"
   },
   "scripts": {
-    "deploy": "rm -rf public; brunch build --production; surge public",
     "heroku-postbuild": "knex migrate:latest; brunch build --production",
     "knex": "knex",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public",
