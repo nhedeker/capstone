@@ -141,24 +141,6 @@ export const loginUser = (email, password) => {
   };
 };
 
-// export const updateRecipeOrder = (event) => {
-//   let action = 'NULL';
-//
-//   if (event.target.textContent === 'Newest') {
-//     action = 'ORDER_BY_NEWEST';
-//   }
-//   else if (event.target.textContent === 'Popular') {
-//     action = 'ORDER_BY_POPULAR';
-//   }
-//   else if (event.target.textContent === 'Liked') {
-//     action = 'FILTER_BY_LIKES';
-//   }
-//
-//   return {
-//     type: action
-//   };
-// };
-
 export const registeringUser = () => {
   return {
     type: 'REGISTERING_USER'
@@ -208,41 +190,12 @@ export const updateUserAuth = (event) => {
   };
 };
 
-// export const updateSearchTerm = (searchValue) => {
-//   return {
-//     type: 'UPDATE_SEARCH_TERM',
-//     searchValue
-//   };
-// };
-//
-// export const filterBySearch = () => {
-//   return {
-//     type: 'FILTER_BY_SEARCH'
-//   };
-// };
-//
-// export const search = (event) => {
-//   return (dispatch) => {
-//     dispatch(updateSearchTerm(event.target.value));
-//     dispatch(filterBySearch());
-//   };
-// };
-
 export const showUserRecipes = (username) => {
   return {
     type: 'FILTER_BY_USER',
     username
   };
 };
-
-// export const goToUserPage = (username) => {
-//   return (dispatch) => {
-//     dispatch(getUserPageData(username))
-//     .then(() => {
-//       dispatch(push(`/user/${username}`));
-//     });
-//   };
-// };
 
 export const likeRecipe = (recipeId) => {
   return (dispatch) => {
@@ -280,7 +233,6 @@ export const changeLikeStatus = (recipe) => {
   };
 };
 
-//new code
 export const updateRecipeOrder = (event) => {
   return {
     type: 'UPDATE_RECIPE_ORDER',
@@ -295,23 +247,32 @@ export const updateSearchTerm = (searchValue) => {
   };
 };
 
-export const displayRecipes = () => {
+export const displayRecipes = (users) => {
   return {
-    type: 'DISPLAY_RECIPES'
+    type: 'DISPLAY_RECIPES',
+    users
+  };
+};
+
+export const prepareUserState = () => {
+  return (dispatch, getState) => {
+    const { users } = getState();
+
+    dispatch(displayRecipes(users));
   };
 };
 
 export const search = (event) => {
   return (dispatch) => {
     dispatch(updateSearchTerm(event.target.value));
-    dispatch(displayRecipes());
+    dispatch(prepareUserState());
   };
 };
 
 export const order = (event) => {
   return (dispatch) => {
     dispatch(updateRecipeOrder(event));
-    dispatch(displayRecipes());
+    dispatch(prepareUserState());
   };
 };
 
@@ -328,7 +289,7 @@ export const fetchRecipes = () => {
           return dispatch(getLikedRecipes());
         }
       }).then(() => {
-        dispatch(displayRecipes());
+        dispatch(prepareUserState());
       })
       .catch((err) => {
         dispatch(updateErrorMessage(err));
@@ -367,12 +328,9 @@ export const logoutUser = () => {
 
 export const getUserPageData = (username) => {
   return (dispatch) => {
-    dispatch(fetchRecipes())
+    dispatch(fetchUser(username))
       .then(() => {
-        return dispatch(fetchUser(username));
-      })
-      .then(() => {
-        dispatch(showUserRecipes(username));
+        return dispatch(fetchRecipes());
       });
   };
 };

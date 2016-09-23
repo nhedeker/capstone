@@ -22,15 +22,6 @@ const recipes = (state = [], action) => {
         searchTerm: action.searchValue
       });
     }
-    case 'FILTER_BY_USER': {
-      const filteredRecipes = state.recipes.filter((recipe) => {
-        return recipe.username === action.username;
-      });
-
-      return Object.assign({}, state, {
-        showRecipes: filteredRecipes
-      });
-    }
     case 'DISPLAY_RECIPES': {
       let nextRecipes = state.recipes;
 
@@ -53,9 +44,10 @@ const recipes = (state = [], action) => {
           return state.liked.includes(recipe.id);
         });
       }
-      else if (state.order === 'User') {
+
+      if (action.users.user && action.users.user.username) {
         nextRecipes = nextRecipes.filter((recipe) => {
-          return recipe.username === action.username;
+          return recipe.username === action.users.user.username;
         });
       }
 
