@@ -78,7 +78,7 @@ const User = React.createClass({
             <h1>
               {displayName}
             </h1>
-            <IconMenu
+            {/* <IconMenu
               anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
               iconButtonElement={
                 <IconButton
@@ -91,11 +91,11 @@ const User = React.createClass({
               style={{ display: sameUser ? 'inline-block' : 'none' }}
               targetOrigin={{ horizontal: 'left', vertical: 'top' }}
             >
-              {/* <Link className="linkNormalize" to={"/settings"}>
+              <Link className="linkNormalize" to={"/settings"}>
                 <MenuItem primaryText="Settings" />
-              </Link> */}
+              </Link>
               <MenuItem onTouchTap={logoutUser} primaryText="Logout" />
-            </IconMenu>
+            </IconMenu> */}
           </div>
           <p>{`${user.bio.trim() ? user.bio : ''}`}</p>
         </Paper>
