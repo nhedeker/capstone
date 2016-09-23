@@ -297,6 +297,12 @@ export const fetchRecipes = () => {
   };
 };
 
+export const clearUser = () => {
+  return {
+    type: 'CLEAR_USER'
+  };
+};
+
 export const goToMain = () => {
   const event = {
     target: {
@@ -305,6 +311,7 @@ export const goToMain = () => {
   };
 
   return (dispatch) => {
+    dispatch(clearUser());
     dispatch(updateRecipeOrder(event));
     dispatch(fetchRecipes())
     .then(() => {
@@ -332,11 +339,5 @@ export const getUserPageData = (username) => {
       .then(() => {
         return dispatch(fetchRecipes());
       });
-  };
-};
-
-export const clearUser = () => {
-  return {
-    type: 'CLEAR_USER'
   };
 };

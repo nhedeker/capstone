@@ -1,10 +1,10 @@
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
+// import IconButton from 'material-ui/IconButton';
+// import IconMenu from 'material-ui/IconMenu';
+// import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
 import React from 'react';
 import RecipeGrid from './RecipeGrid';
-import SettingsIcon from 'material-ui/svg-icons/action/settings';
+// import SettingsIcon from 'material-ui/svg-icons/action/settings';
 
 const User = React.createClass({
   componentWillMount() {
@@ -21,14 +21,14 @@ const User = React.createClass({
 
   populateRender() {
     const { user } = this.props.users;
-    const { logoutUser } = this.props;
-    const { loggedIn } = this.props.userAuth;
+    // const { logoutUser } = this.props;
+    // const { loggedIn } = this.props.userAuth;
 
-    let sameUser = false;
-
-    if (loggedIn && user.id === this.props.userAuth.user.userId) {
-      sameUser = true;
-    }
+    // let sameUser = false;
+    //
+    // if (loggedIn && user.id === this.props.userAuth.user.userId) {
+    //   sameUser = true;
+    // }
 
     const stylePaper = {
       borderRadius: '1rem',
@@ -42,18 +42,18 @@ const User = React.createClass({
       color: '#424242'
     };
 
-    const smallIcon = {
-      width: '36px',
-      height: '36px',
-      borderRadius: '50%'
-    };
-
-    const smallIconButton = {
-      width: '72px',
-      height: '72px',
-      borderRadius: '50%',
-      zIndex: 1
-    };
+    // const smallIcon = {
+    //   width: '36px',
+    //   height: '36px',
+    //   borderRadius: '50%'
+    // };
+    //
+    // const smallIconButton = {
+    //   width: '72px',
+    //   height: '72px',
+    //   borderRadius: '50%',
+    //   zIndex: 1
+    // };
 
     const stylePaperImg = {
       width: '30%',
