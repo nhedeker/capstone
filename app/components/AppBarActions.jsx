@@ -14,11 +14,15 @@ const AppBarActions = React.createClass({
     browserHistory.push('/login');
   },
 
+  handleLogoutTouchTap() {
+    return this.props.logoutUser();
+  },
+
   render() {
     const handleOrderChange = this.props.order;
     const handleSearchTermChange = this.props.search;
     const loggedIn = this.props.userAuth.loggedIn;
-    const user = this.props.userAuth.user.username;
+    // const user = this.props.userAuth.user.username;
 
     const appBarThemeColor = 'white';
 
@@ -64,7 +68,10 @@ const AppBarActions = React.createClass({
           value="Liked"
         />
       </DropDownMenu>
-      {/* <Link style={{ display: loggedIn ? 'block' : 'none' }} to={"/newrecipe"}>
+      {/* <Link
+        style={{ display: loggedIn ? 'block' : 'none' }}
+        to={"/newrecipe"}
+      >
         <IconButton>
           <AddCircle color={appBarThemeColor} />
         </IconButton>
@@ -80,10 +87,7 @@ const AppBarActions = React.createClass({
       <IconMenu
         anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
         iconButtonElement={
-          <IconButton
-            // iconStyle={smallIcon}
-            // style={smallIconButton}
-          >
+          <IconButton>
             <AccountCircle color={appBarThemeColor} />
           </IconButton>
         }
@@ -93,7 +97,7 @@ const AppBarActions = React.createClass({
         {/* <Link className="linkNormalize" to={"/settings"}>
           <MenuItem primaryText="Settings" />
         </Link> */}
-        <MenuItem onTouchTap={this.props.logoutUser} primaryText="Logout" />
+        <MenuItem onTouchTap={this.handleLogoutTouchTap} primaryText="Logout" />
       </IconMenu>
       <FlatButton
         className="appBarButtons"

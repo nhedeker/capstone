@@ -16,11 +16,9 @@ const UserAuth = React.createClass({
     return <Paper className="userAuthPaper">
       <Tabs inkBarStyle={{ backgroundColor: 'orange', height: '2.5px' }}>
         <Tab label="Log In" >
-          {/* <Login /> */}
           {React.cloneElement(<Login />, this.props)}
         </Tab>
         <Tab label="Register" >
-          {/* <Register /> */}
           {React.cloneElement(<Register />, this.props)}
         </Tab>
       </Tabs>
