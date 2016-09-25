@@ -1,8 +1,8 @@
 import AppBar from 'material-ui/AppBar';
 import AppBarActions from './AppBarActions';
+// import LocalDining from 'material-ui/svg-icons/maps/local-dining';
 import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
-import LocalDining from 'material-ui/svg-icons/maps/local-dining';
 
 const Main = React.createClass({
   componentWillMount() {
