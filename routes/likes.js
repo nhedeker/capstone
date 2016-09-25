@@ -28,7 +28,7 @@ router.get('/likes', checkAuth, (req, res, next) => {
 });
 
 // Creates new user like entry in likes table
-router.post('/likes', checkAuth, (req, res, next) => {
+router.post('/likes', checkAuth, ev(validations.post), (req, res, next) => {
   const { recipeId } = req.body;
   const { userId } = req.token;
 
@@ -67,7 +67,8 @@ router.post('/likes', checkAuth, (req, res, next) => {
 });
 
 // Deletes a like entry with the like table
-router.delete('/likes/:recipeId', checkAuth, (req, res, next) => {
+// eslint-disable-next-line max-len
+router.delete('/likes/:recipeId', checkAuth, ev(validations.delete), (req, res, next) => {
   const { recipeId } = req.params;
   const { userId } = req.token;
 
