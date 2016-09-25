@@ -13,7 +13,7 @@ const validations = require('../validations/token');
 const router = express.Router();
 
 // Creates JWT for user authentication
-router.post('/token', (req, res, next) => {
+router.post('/token', ev(validations.post), (req, res, next) => {
   let user;
 
   knex('users')
@@ -65,6 +65,8 @@ router.post('/token', (req, res, next) => {
 router.delete('/token', (req, res, _next) => {
   res.clearCookie('accessToken');
   res.clearCookie('loggedIn');
+  res.clearCookie('userId');
+  res.clearCookie('username');
   res.sendStatus(200);
 });
 
