@@ -2,6 +2,7 @@ import AppBar from 'material-ui/AppBar';
 import AppBarActions from './AppBarActions';
 import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
+import LocalDining from 'material-ui/svg-icons/maps/local-dining';
 
 const Main = React.createClass({
   componentWillMount() {
@@ -27,10 +28,11 @@ const Main = React.createClass({
     return <div>
       <AppBar
         className="appBar"
+        // iconElementLeft={<LocalDining />}
         onTitleTouchTap={this.handleTitleTouchTap}
         showMenuIconButton={false}
         style={styleAppBar}
-        title="NameOfApp"
+        title="MyApron"
         titleStyle={styleTitle}
       >
         {React.cloneElement(
