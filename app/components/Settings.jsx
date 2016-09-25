@@ -3,7 +3,8 @@ import FlatButton from 'material-ui/FlatButton';
 import Paper from 'material-ui/Paper';
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import users from '../data/users';
+
+// import users from '../data/users';
 
 const Settings = React.createClass({
   componentWillMount() {
@@ -30,7 +31,8 @@ const Settings = React.createClass({
       <h1 className="settingsHeader">Settings</h1>
       <div className="settingsContentContainer">
         <TextField
-          defaultValue={users[0].email}
+
+          // defaultValue={users[0].email}
           floatingLabelStyle={styleInputLabel}
           floatingLabelText="Email"
           type="email"
@@ -43,7 +45,8 @@ const Settings = React.createClass({
         />
         <div className="settingsUserNameContainer">
           <TextField
-            defaultValue={users[0].firstName}
+
+            // defaultValue={users[0].firstName}
             floatingLabelStyle={styleInputLabel}
             floatingLabelText="First Name"
             fullWidth={true}
@@ -51,7 +54,8 @@ const Settings = React.createClass({
             type="text"
           />
           <TextField
-            defaultValue={users[0].lastName}
+
+            // defaultValue={users[0].lastName}
             floatingLabelStyle={styleInputLabel}
             floatingLabelText="Last Name"
             fullWidth={true}
@@ -73,7 +77,8 @@ const Settings = React.createClass({
         <p className="settingsText">Username</p>
         <p className="settingsUserName">nameofapp.herokuapp.com/user/</p>
         <TextField
-          defaultValue={users[0].username}
+
+          // defaultValue={users[0].username}
           hintText="Username"
           type="text"
         />
