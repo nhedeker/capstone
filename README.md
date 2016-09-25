@@ -1,5 +1,5 @@
 MyApron
-======
+------
 
 1. What's the name of your project?
   * MyApron
