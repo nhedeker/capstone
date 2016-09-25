@@ -11,8 +11,27 @@ const validations = require('../validations/users');
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
+// returns a user's information
+router.get('/users/:username', (req, res, next) => {
+  const { username } = req.params;
+
+  knex('users')
+    .where('username', username)
+    .first()
+    .then((row) => {
+      const user = camelizeKeys(row);
+
+      delete user.hashedPassword;
+
+      res.send(user);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 // Creates new user in users table
-router.post('/users', (req, res, next) => {
+router.post('/users', ev(validations.post), (req, res, next) => {
   const { email, password, username } = req.body;
 
   knex('users')
@@ -55,23 +74,23 @@ router.post('/users', (req, res, next) => {
     });
 });
 
-router.patch('/users/password', (req, res, next) => {
-  const { userId } = req.token;
-  const { password } = req.body;
-
-  bcrypt.hash(password, 12)
-  .then((hashedPassword) => {
-    return knex('users')
-      .where('id', userId)
-      .update('hashed_password', hashedPassword);
-  })
-  .then(() => {
-    res.sendStatus(200);
-  })
-  .catch((err) => {
-    next(err);
-  });
-});
+// router.patch('/users/password', (req, res, next) => {
+//   const { userId } = req.token;
+//   const { password } = req.body;
+//
+//   bcrypt.hash(password, 12)
+//   .then((hashedPassword) => {
+//     return knex('users')
+//       .where('id', userId)
+//       .update('hashed_password', hashedPassword);
+//   })
+//   .then(() => {
+//     res.sendStatus(200);
+//   })
+//   .catch((err) => {
+//     next(err);
+//   });
+// });
 
 // router.patch('/users', (req, res, next) => {
 //   const { userId } = req.token;
@@ -129,38 +148,20 @@ router.patch('/users/password', (req, res, next) => {
 //     });
 // });
 
-router.delete('/users', (req, res, next) => {
-  const { userId } = req.token;
-
-  knex('users')
-    .where('id', userId)
-    .del()
-  .then(() => {
-    res.clearCookie('accessToken');
-    res.clearCookie('loggedIn');
-    res.sendStatus(200);
-  })
-  .catch((err) => {
-    next(err);
-  });
-});
-
-router.get('/users/:username', (req, res, next) => {
-  const { username } = req.params;
-
-  knex('users')
-    .where('username', username)
-    .first()
-    .then((row) => {
-      const user = camelizeKeys(row);
-
-      delete user.hashedPassword;
-
-      res.send(user);
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
+// router.delete('/users', (req, res, next) => {
+//   const { userId } = req.token;
+//
+//   knex('users')
+//     .where('id', userId)
+//     .del()
+//   .then(() => {
+//     res.clearCookie('accessToken');
+//     res.clearCookie('loggedIn');
+//     res.sendStatus(200);
+//   })
+//   .catch((err) => {
+//     next(err);
+//   });
+// });
 
 module.exports = router;
