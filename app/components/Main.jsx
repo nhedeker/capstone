@@ -1,6 +1,7 @@
 import AppBar from 'material-ui/AppBar';
 import AppBarActions from './AppBarActions';
-// import LocalDining from 'material-ui/svg-icons/maps/local-dining';
+import IconButton from 'material-ui/IconButton';
+import LocalDining from 'material-ui/svg-icons/maps/local-dining';
 import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
 
@@ -9,14 +10,14 @@ const Main = React.createClass({
     this.props.fetchRecipes();
   },
 
-  handleTitleTouchTap() {
+  handleTouchTap() {
     this.props.goToMain();
   },
 
   render() {
     const styleTitle = {
       maxWidth: '100vw',
-      minWidth: '150px',
+      minWidth: '125px',
       marginRight: '10px'
     };
 
@@ -25,12 +26,24 @@ const Main = React.createClass({
       position: 'fixed'
     };
 
+    const styleIconButton = {
+      margin: 0,
+      padding: 0
+    };
+
     return <div>
       <AppBar
         className="appBar"
-        // iconElementLeft={<LocalDining />}
-        onTitleTouchTap={this.handleTitleTouchTap}
-        showMenuIconButton={false}
+        iconElementLeft={
+          <IconButton
+            iconStyle={styleIconButton}
+            onTouchTap={this.handleTouchTap}
+            style={styleIconButton}
+          >
+            <LocalDining />
+          </IconButton>
+        }
+        onTitleTouchTap={this.handleTouchTap}
         style={styleAppBar}
         title="MyApron"
         titleStyle={styleTitle}
