@@ -103,9 +103,6 @@ body {
   flex-direction: row;
   wrap: nowrap;
   justify-content: space-between;
-  /*align-items: center;*/
-  /*issue with padding/border of profile icon on Users*/
-  /*http://images.hellogiggles.com/uploads/2015/03/08/purple-suede.jpg*/
   align-content: center;
   width: 60%;
   margin: 0 auto;
@@ -125,8 +122,6 @@ body {
   align-items: center;
   width: 65%;
   margin: 0 auto;
-  /*text-align: center;*/
-  /*height: 50px;*/
   height: 3rem;
 }
 
@@ -193,6 +188,7 @@ body {
   justify-content: center;
   align-content: flex-start;
   align-items: flex-start;
+  width: 100%;
 }
 
 .recipeImg {
@@ -309,7 +305,8 @@ body {
 
 .smallRecipePaper {
   max-width: 20%;
-  min-width: 282.23px;
+  flex: 1 0 283px;
+  min-width: 283px;
   margin: 1rem;
   position: relative;
 }
