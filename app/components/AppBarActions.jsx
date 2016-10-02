@@ -1,6 +1,4 @@
-import { Link, browserHistory } from 'react-router';
 import AccountCircle from 'material-ui/svg-icons/action/account-circle';
-// import AddCircle from 'material-ui/svg-icons/content/add-circle';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
@@ -8,6 +6,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import React from 'react';
 import TextField from 'material-ui/TextField';
+import { browserHistory } from 'react-router';
 
 const AppBarActions = React.createClass({
   handleLoginTouchTap() {
@@ -22,7 +21,6 @@ const AppBarActions = React.createClass({
     const handleOrderChange = this.props.order;
     const handleSearchTermChange = this.props.search;
     const loggedIn = this.props.userAuth.loggedIn;
-    // const user = this.props.userAuth.user.username;
 
     const appBarThemeColor = 'white';
 
@@ -68,22 +66,6 @@ const AppBarActions = React.createClass({
           value="Liked"
         />
       </DropDownMenu>
-      {/* <Link
-        style={{ display: loggedIn ? 'block' : 'none' }}
-        to={"/newrecipe"}
-      >
-        <IconButton>
-          <AddCircle color={appBarThemeColor} />
-        </IconButton>
-      </Link> */}
-      {/* <Link
-        style={{ display: loggedIn ? 'block' : 'none' }}
-        to={`/user/${user}`}
-      >
-        <IconButton>
-          <AccountCircle color={appBarThemeColor} />
-        </IconButton>
-      </Link> */}
       <IconMenu
         anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
         iconButtonElement={
@@ -94,9 +76,6 @@ const AppBarActions = React.createClass({
         style={{ display: loggedIn ? 'block' : 'none' }}
         targetOrigin={{ horizontal: 'left', vertical: 'top' }}
       >
-        {/* <Link className="linkNormalize" to={"/settings"}>
-          <MenuItem primaryText="Settings" />
-        </Link> */}
         <MenuItem onTouchTap={this.handleLogoutTouchTap} primaryText="Logout" />
       </IconMenu>
       <FlatButton
