@@ -40,6 +40,42 @@ exports.seed = function(knex) {
         profile_img: 'https://media.licdn.com/media/AAEAAQAAAAAAAAjYAAAAJDFlYWJlNzk3LTY5YzYtNDk3Yy1iNWQwLTAwZTkzOWVhZGY1OA.jpg',
         created_at: new Date('2016-07-26 14:26:16 UTC'),
         updated_at: new Date('2016-07-26 14:26:16 UTC')
+      },
+      {
+        id: 4,
+        email: 'john@jumping.net',
+        hashed_password: '$2a$12$7vhDp4Xu2e9P.MyVslyKdOPiAGHtE8hPwvxiCZi2PPTYo5kCYhQlW',
+        first_name: 'John',
+        last_name: 'Carney',
+        bio: 'Favorite things: cakes, 80s retro, and brown paper packages tied up with string.',
+        username: 'HearthstoneFan',
+        profile_img: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAkdAAAAJGM1Njk1YzRmLWEyM2EtNDY3ZS05NjE3LTlmZmQxMjk0YjNiNw.jpg',
+        created_at: new Date('2016-07-26 14:26:16 UTC'),
+        updated_at: new Date('2016-07-26 14:26:16 UTC')
+      },
+      {
+        id: 5,
+        email: 'matt@stainedglass.net',
+        hashed_password: '$2a$12$7vhDp4Xu2e9P.MyVslyKdOPiAGHtE8hPwvxiCZi2PPTYo5kCYhQlW',
+        first_name: 'Matt',
+        last_name: 'Stuhring',
+        bio: 'I am kind of a big deal',
+        username: 'NWLegend',
+        profile_img: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAjiAAAAJDZlZGJhOThhLTc0NzktNDIyOC05ZDAxLWM4MWY1MmIzNzM2Mw.jpg',
+        created_at: new Date('2016-07-26 14:26:16 UTC'),
+        updated_at: new Date('2016-07-26 14:26:16 UTC')
+      },
+      {
+        id: 6,
+        email: 'katie@parker.net',
+        hashed_password: '$2a$12$7vhDp4Xu2e9P.MyVslyKdOPiAGHtE8hPwvxiCZi2PPTYo5kCYhQlW',
+        first_name: 'Katie',
+        last_name: 'Parker',
+        bio: 'Loves long walks on the beach. Lactose intolerant.',
+        username: 'kparker',
+        profile_img: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAP6AAAAJDFmNDJlMDlhLWY0YmMtNGVmNi1iMjk1LTM5ZDM3OWUyMzMxNQ.jpg',
+        created_at: new Date('2016-07-26 14:26:16 UTC'),
+        updated_at: new Date('2016-07-26 14:26:16 UTC')
       }
     ])
   )

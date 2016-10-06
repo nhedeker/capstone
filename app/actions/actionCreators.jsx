@@ -17,7 +17,7 @@ export const updateErrorMessage = (newError) => {
 
   return {
     type: 'UPDATE_ERROR_MESSAGE',
-    newErrorMessage: `Error: ${newMessage}`
+    newErrorMessage: `${newMessage}`
   };
 };
 
